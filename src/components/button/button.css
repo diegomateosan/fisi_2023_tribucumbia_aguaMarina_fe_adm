@@ -1,0 +1,56 @@
+.app-container-button > button {
+  width: 318px;
+  height: 50px;
+  background: var(--main-button-color);
+  border-radius: 15px;
+  font-size: 22px;
+  margin-top: 30px;
+  font-family: "Roboto";
+  color: var(--second-font-color);
+  margin-left: 40px;
+}
+
+.app-container-log-fb-google > div {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+}
+
+.app-container-tittle {
+  margin-bottom: 30px;
+}
+
+hr {
+  background-color: black;
+  width: 100px;
+  float: center;
+  height: 1px;
+  border: none;
+}
+
+.app-container-tittle > label {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.app-container-fb-login-icon > svg {
+  align-items: center;
+  align-content: center;
+}
+
+.app-container-fb-login-icon > svg {
+  color: rgb(66 103 178);
+  margin-top: -5px;
+  margin-right: 15px;
+}
+
+.app-container-google-login-icon > svg {
+  color: rgb(219, 68, 55);
+  margin-top: -5px;
+  margin-right: 15px;
+}
+
+.app-container-fb-login {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

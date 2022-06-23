@@ -1,0 +1,6 @@
+.app-container-home {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  height: 100%;
+}
