@@ -1,0 +1,42 @@
+.html,
+body,
+#root,
+.app-container {
+  margin: 0% 0%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.app-container-notItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-container-notItem > img {
+  margin-top: 82.44px;
+  margin-bottom: 29px;
+  width: 500px;
+  height: 500px;
+}
+
+.app-container-notItem > h2 {
+  margin-top: -50px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.app-container-notItem > p {
+  text-align: center;
+  font-size: 17px;
+  color: #000000;
+  opacity: 0.57;
+}
+
+.app-container-create {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}

@@ -4,3 +4,20 @@
   background: white;
   height: 100%;
 }
+
+.app-container-home {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-container-home > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container-category-content {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  align-content: center;
+}

@@ -7,7 +7,16 @@ const categoryService = {
   list: async (): Promise<Category[] | null> => {
     try {
       const { data } = await axios.get(`${BASE_URL}/category/all`);
-      return data;
+      return data.data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  count: async () => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/category/count`);
+      return data.data;
     } catch (error) {
       return null;
     }
