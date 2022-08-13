@@ -18,7 +18,7 @@ import categoryService from "../../services/category";
 
 //Styles
 import "./category.css";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { InputDefault } from "../inputContainer/input";
 
 export const Category: React.FC<{}> = () => {
@@ -85,39 +85,68 @@ export const CreateContent: React.FC<{
   const [imageUpload, setImageUpload] = useState<File | null>(null);
   const [imageUrl, setimageUrl] = useState("");
   const [urlState, setUrlState] = useState(false);
+  const [buttonState, setbuttonState] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect ( ( )=>{
+    if(imageUpload!==undefined && imageUpload!==null ){
+
+       setbuttonState(true);
+       console.log(buttonState);
+    }else{
+      setbuttonState(false);
+       console.log(buttonState);
+      setUrlState(false);
+      }
+    console.log(imageUpload);
+  },[imageUpload] );
 
   const mostrarImagen = () => {
+
     <img src={imageUrl} alt="imageJustUploaded" />;
   };
 
   const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
-    /** do something with the file **/
     setImageUpload(file);
   };
 
   const uploadImage = async () => {
-    if (imageUpload === null) {
+    if (imageUpload === null || imageUpload===undefined) {
       alert("No se seleccionó ningún archivo");
       return <div></div>;
+    }else{
+      const imageRef = await ref(storage, `category/${imageUpload.name + v4()}`);
+      await uploadBytes(imageRef, imageUpload).then(() => {
+        console.log("llego");
+      });
+  
+      getDownloadURL(ref(storage, `category/${imageRef.name}`)).then((url) => {
+        console.log(url);
+        setimageUrl(url);
+        setUrlState(true);
+  
+  
+      });
+  
+      setUrlState(true);      
     }
-    const imageRef = await ref(storage, `category/${imageUpload.name + v4()}`);
-    await uploadBytes(imageRef, imageUpload).then(() => {
-      console.log("llego");
-    });
 
-    getDownloadURL(ref(storage, `category/${imageRef.name}`)).then((url) => {
-      console.log(url);
-      setimageUrl(url);
-    });
-
-    setUrlState(true);
   };
 
   const createCategory = async () => {
-    const result = await categoryService.create(name, description, imageUrl);
-    console.log(result);
+      if(nameState===true && descriptionState ===true && urlState===true){
+        const result = await categoryService.create(name, description, imageUrl);
+        console.log(result);
+        alert("Registro exitoso");
+        navigate("/category");
+
+      }else{
+        alert("campos vacios");
+      }
+
+    
   };
 
   return (
@@ -150,7 +179,14 @@ export const CreateContent: React.FC<{
           <label>Imagen</label>
           <input type="file" onChange={(event) => handleOnChange(event)} />
           <button onClick={uploadImage}>Upload Image</button>
-          <Button placeholder="Registrar" handleClick={createCategory} />
+          {buttonState?(
+            <Button placeholder="Registrar" handleClick={createCategory} />
+           ):  (
+
+            <div></div>
+
+           )    }
+          
         </div>
       </div>
     </div>
