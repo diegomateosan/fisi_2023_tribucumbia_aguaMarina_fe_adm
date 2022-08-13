@@ -13,8 +13,8 @@ import { useState, useEffect } from "react";
 
 import userService from "./services/user";
 
-import { Login } from "./pages/Admin/Login/login";
-import { Home } from "./pages/Admin/Home/home";
+import { Login } from "./pages/Login/login";
+import { Home, CreateCategory } from "./pages/Home/home";
 
 function App() {
   const [adminLoggedIn, setadminLoggedIn] = useState(false);
@@ -44,15 +44,22 @@ function App() {
         {adminLoggedIn && (
           <>
             <Route
-              path="/home"
+              path="/category"
               element={<Home handleauth={() => setadminLoggedIn(false)} />}
+            />
+
+            <Route
+              path="/category/create"
+              element={
+                <CreateCategory handleauth={() => setadminLoggedIn(false)} />
+              }
             />
           </>
         )}
 
         <Route
           path="*"
-          element={<Navigate to={adminLoggedIn ? "/home" : "/"} />}
+          element={<Navigate to={adminLoggedIn ? "/category" : "/"} />}
         />
       </Routes>
     </BrowserRouter>

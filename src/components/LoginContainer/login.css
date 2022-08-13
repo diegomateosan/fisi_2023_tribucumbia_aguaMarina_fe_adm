@@ -16,5 +16,28 @@
 }
 
 .app-container-form {
-  margin-top: -30px;
+  width: fit-content;
+}
+
+.app-container-header > h1 {
+  font-size: 45px;
+  text-align: left;
+  margin-bottom: 40px;
+  color: #0b132a;
+  font-family: "Open Sans";
+}
+
+.app-container-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-container-header > img {
+  width: 150px;
+  height: 150px;
+}
+
+.app-container-register {
+  margin-top: 25px;
+  margin-left: 50px;
 }

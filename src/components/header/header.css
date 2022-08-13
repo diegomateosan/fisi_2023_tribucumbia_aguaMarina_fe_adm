@@ -1,0 +1,45 @@
+.app-container-full {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.app-container-header-icon > svg {
+  margin-right: 20px;
+  justify-content: center;
+  align-content: center;
+  margin-left: -15px;
+  margin-top: 20.94px;
+}
+
+.app-container-title > h2 {
+  margin-top: 37.94px;
+  font-size: 32px;
+  color: black;
+}
+
+.app-container-header-default-hr > hr {
+  width: 1250px;
+  color: black;
+  border-width: 0.6px;
+}
+
+.app-container-header-default-title {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  width: 100%;
+}
+
+.app-container-header-default-title-button {
+  margin-top: -8px;
+  display: flex;
+  justify-content: right;
+  margin-left: 840px;
+}

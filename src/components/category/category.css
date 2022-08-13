@@ -1,0 +1,25 @@
+.app-container-category-create-form {
+  margin-left: -50px;
+}
+
+.app-container-category-create-form > div > div > div > input {
+  width: 33%;
+}
+
+.app-container-category-create-file {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-left: 55px;
+}
+
+.app-container-category-create-file > label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.app-container-category-create-file > button {
+  margin-top: 20px;
+  width: 33%;
+}

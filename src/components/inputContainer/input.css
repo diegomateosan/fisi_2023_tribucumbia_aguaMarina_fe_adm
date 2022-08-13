@@ -1,0 +1,73 @@
+.app-container-input-icon > div {
+  justify-content: left;
+  margin-left: 55px;
+}
+
+.app-container-input-icon {
+  margin-top: 20px;
+}
+
+.app-container-input-label > label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.app-container-input-label {
+  margin-bottom: 10px;
+}
+
+.app-container-showError > label {
+  font-size: 12px;
+  color: red;
+  font-style: italic;
+}
+.app-container-inputAndIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+
+.app-container-inputAndIcon > input {
+  -webkit-appearance: none;
+  width: 80%;
+  border: 0;
+  font-family: inherit;
+  padding: 0;
+  height: 35px;
+  font-size: 16px;
+  font-weight: 500;
+  background: none;
+  border-radius: 0;
+  color: #223254;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid;
+  margin-right: 30px;
+}
+
+.app-container-icon {
+  display: flex;
+  border: 0;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.icon-check {
+  color: green;
+}
+
+.icon-error {
+  color: rgba(203, 9, 9, 0.975);
+}
+
+.app-container-tooglePassword {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.app-container-tooglePassword > label {
+  margin-left: 10px;
+  font-size: 14px;
+}

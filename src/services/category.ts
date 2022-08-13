@@ -21,6 +21,23 @@ const categoryService = {
       return null;
     }
   },
+
+  create: async (name: string, description: string, url: string) => {
+    try {
+      const { data } = await axios({
+        url: `${BASE_URL}/category/create`,
+        method: "post",
+        data: {
+          name: name,
+          description: description,
+          url: url,
+        },
+      });
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
 };
 
 export default categoryService;

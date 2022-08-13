@@ -5,12 +5,12 @@ import { AiFillFacebook } from "react-icons/ai";
 import { AiFillGooglePlusCircle } from "react-icons/ai";
 
 export const Button: React.FC<{
-  placeholder: string;
   handleClick: () => void;
-}> = ({ placeholder, handleClick }) => {
+  placeholder: string;
+}> = ({ handleClick, placeholder }) => {
   return (
-    <div className="app-container-button">
-      <button onClick={() => handleClick()}>{placeholder}</button>
+    <div className="app-container-buttonLogin">
+      <button onClick={handleClick}>{placeholder}</button>
     </div>
   );
 };

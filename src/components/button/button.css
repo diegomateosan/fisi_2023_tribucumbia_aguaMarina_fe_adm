@@ -1,21 +1,20 @@
-.app-container-button {
+.app-container-buttonLogin {
+  display: flex;
   justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-
-.app-container-button > button {
-  width: 318px;
-  height: 50px;
-  background: var(--main-button-color);
-  border-radius: 15px;
-  font-size: 22px;
   margin-top: 30px;
-  font-family: "Roboto";
-  color: var(--second-font-color);
-  margin-left: 40px;
 }
 
+.app-container-buttonLogin > button {
+  width: 300px;
+  height: 40px;
+  border-radius: 15px;
+  border: none;
+  background-color: var(--main-button-color);
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
 .app-container-log-fb-google > div {
   display: flex;
   flex-direction: row;
