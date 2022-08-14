@@ -41,12 +41,12 @@ export const NavBar: React.FC<{
 
           <div className="app-container-category">
             <BsFillGrid3X3GapFill size={28} />
-            <Link to="">Categorias</Link>
+            <Link to="/category">Categorias</Link>
           </div>
 
           <div className="app-container-platillos">
             <GrCafeteria size={28} color="white" />
-            <Link to="">Platillos</Link>
+            <Link to="/platillo">Platillos</Link>
           </div>
 
           <div className="app-container-dashboard">

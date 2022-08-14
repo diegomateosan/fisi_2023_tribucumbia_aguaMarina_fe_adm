@@ -6,18 +6,24 @@ import { HeaderBack ,HeaderButton } from "../../components/header/header";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
 
+
 export const Home: React.FC<{
   handleauth: () => void;
 }> = ({ handleauth }) => {
+ 
+  const navigate = useNavigate();
+ 
+ 
   return (
-    <div className="app-container-home">
+  
+      <div className="app-container-home">
       <div className="app-container-navBar">
         <NavBar handleauth={handleauth} />
       </div>
 
       <div className="app-container-category-content">
         <div className="app-container-category-content-header">
-          <HeaderButton placeholder="Categorías" />
+          <HeaderButton placeholder="Categorías" handleClick={()=>navigate("/category/create") } nameButton="Crear Categoria"/>
         </div>
         <div className="app-container-category-content-category">
                   <Category/>

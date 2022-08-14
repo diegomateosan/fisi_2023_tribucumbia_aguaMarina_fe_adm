@@ -42,8 +42,10 @@ export const HeaderDefault: React.FC<{
 
 export const HeaderButton: React.FC<{
   placeholder: string;
-}> = ({ placeholder }) => {
-  const navigate = useNavigate();
+  nameButton: string;
+  handleClick: () => void;
+}> = ({ placeholder,handleClick ,nameButton}) => {
+
 
   return (
 
@@ -55,8 +57,8 @@ export const HeaderButton: React.FC<{
           
           <div className="app-container-header-default-button">
             <Button
-              placeholder="Crear categoría"
-              handleClick={() => navigate("/category/create")}
+              placeholder={nameButton}
+              handleClick= {handleClick}
             />
           </div>
         </div>
