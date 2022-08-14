@@ -1,45 +1,43 @@
-.app-container-full {
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
+.app-container-headerback{
+
+display: flex;
+flex-direction: row;
+border-bottom: 1px solid;
+align-items: center;
 }
 
-.app-container-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.app-container-headerButton{
+  border-bottom: 1px solid;
+  height: 72.55px;
 }
 
-.app-container-header-icon > svg {
-  margin-right: 20px;
-  justify-content: center;
-  align-content: center;
-  margin-left: -15px;
-  margin-top: 20.94px;
-}
-
-.app-container-title > h2 {
-  margin-top: 37.94px;
-  font-size: 32px;
-  color: black;
-}
-
-.app-container-header-default-hr > hr {
-  width: 1250px;
-  color: black;
-  border-width: 0.6px;
-}
-
-.app-container-header-default-title {
+.app-container-header-default-title-button{
   display: flex;
   flex-direction: row;
-  align-content: center;
   width: 100%;
 }
 
-.app-container-header-default-title-button {
-  margin-top: -8px;
-  display: flex;
-  justify-content: right;
-  margin-left: 840px;
-}
+.app-container-header-default-title-button> div{
+  width: 50%;
+  }
+
+  .app-container-header-default-title > h2{
+    margin-left: 60px;
+  }
+
+ 
+  .app-container-header-default-button{
+    margin-bottom: 30px; 
+    margin-left: 650px;
+  }
+
+  .app-container-header-default-button > div  {
+    justify-content: none;
+    align-items: none;
+    margin-top: 15px;
+    margin-bottom: 0;
+
+  }
+  .app-container-headerback > div {
+    margin-left: 10px;
+  }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Category, CreateContent } from "../../components/category/category";
 import { NavBar } from "../../components/sideBar/sideBar";
-import { Header, HeaderDefault } from "../../components/header/header";
+import { HeaderBack ,HeaderButton } from "../../components/header/header";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
 
@@ -17,9 +17,12 @@ export const Home: React.FC<{
 
       <div className="app-container-category-content">
         <div className="app-container-category-content-header">
-          <HeaderDefault placeholder="Categorías" />
+          <HeaderButton placeholder="Categorías" />
         </div>
-        <Category />
+        <div className="app-container-category-content-category">
+            <Category />
+        </div>
+        
       </div>
     </div>
   );
@@ -42,7 +45,7 @@ export const CreateCategory: React.FC<{
 
       <div className="app-container-category-content">
         <div className="app-container-category-content-header">
-          <Header
+          <HeaderBack
             placeholder="Crear categorías"
             handleClick={() => navigate("/category")}
           />

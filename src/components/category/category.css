@@ -1,9 +1,11 @@
 .app-container-category-create-form {
-  margin-left: -50px;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .app-container-category-create-form > div > div > div > input {
-  width: 33%;
+  width: 70%;
 }
 
 .app-container-category-create-file {
@@ -22,4 +24,38 @@
 .app-container-category-create-file > button {
   margin-top: 20px;
   width: 33%;
+}
+
+
+
+
+.app-container-category-create-image {
+  margin-top: 30px;
+}
+
+.app-container-category-create-image >div > img{
+  width: 350px;
+  height: 325px;
+}
+
+.app-container-category-create {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-container-category-create > div {
+  width: 50%;
+}
+
+
+.app-container-create-image-uploaded{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.app-container-create-image-uploaded> label{
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
 }

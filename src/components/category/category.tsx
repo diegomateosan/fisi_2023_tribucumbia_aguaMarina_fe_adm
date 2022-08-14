@@ -88,6 +88,18 @@ export const CreateContent: React.FC<{
   const [buttonState, setbuttonState] = useState(false);
   const navigate = useNavigate();
 
+  const mostrarImagen = () => {
+    if (urlState === true) {
+      return (
+        <div className="app-container-create-image-uploaded">
+          <label>Previsualización de la Imagen </label>
+          <img src={imageUrl} alt="image just uploaded" />
+        </div>
+      );
+    }
+  };
+
+
   useEffect ( ( )=>{
     if(imageUpload!==undefined && imageUpload!==null ){
 
@@ -101,10 +113,7 @@ export const CreateContent: React.FC<{
     console.log(imageUpload);
   },[imageUpload] );
 
-  const mostrarImagen = () => {
 
-    <img src={imageUrl} alt="imageJustUploaded" />;
-  };
 
   const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
@@ -181,7 +190,7 @@ export const CreateContent: React.FC<{
           <button onClick={uploadImage}>Upload Image</button>
           {buttonState?(
             <Button placeholder="Registrar" handleClick={createCategory} />
-           ):  (
+            ):  (
 
             <div></div>
 
@@ -189,6 +198,10 @@ export const CreateContent: React.FC<{
           
         </div>
       </div>
+      <div className="app-container-category-create-image">
+        {mostrarImagen()}
+      </div>
+
     </div>
   );
 };
