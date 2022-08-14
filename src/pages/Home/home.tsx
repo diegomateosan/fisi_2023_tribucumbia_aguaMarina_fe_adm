@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {Fragment, useState } from "react";
 
 import { Category, CreateContent } from "../../components/category/category";
 import { NavBar } from "../../components/sideBar/sideBar";
@@ -20,10 +20,11 @@ export const Home: React.FC<{
           <HeaderButton placeholder="Categorías" />
         </div>
         <div className="app-container-category-content-category">
-            <Category />
+                  <Category/>
         </div>
         
       </div>
+
     </div>
   );
 };

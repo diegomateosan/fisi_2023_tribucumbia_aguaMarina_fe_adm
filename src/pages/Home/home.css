@@ -20,4 +20,19 @@
   height: 100%;
 }
 
+.app-container-navBar{
+  height: 100%;
+
+
+  
+}
+
+.app-container-category-content-category> div > div >div {
+  display: grid;
+  grid-template-columns: repeat(3, 0.4fr);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-items: center;
+}
 
