@@ -12,17 +12,21 @@ import { v4 } from "uuid";
 //Components
 import { NotItem } from "../notItem/notItem";
 import { Button } from "../button/button";
+import { CategoryCard } from "../dataCard/dataCard";
 
 //Services
 import categoryService from "../../services/category";
+import { CategoryData } from "../../entities/category";
 
 //Styles
 import "./category.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import { InputDefault } from "../inputContainer/input";
+import { dblClick } from "@testing-library/user-event/dist/click";
 
 export const Category: React.FC<{}> = () => {
   const [existsEntrys, setExistsEntrys] = useState<boolean>(false);
+
   const navigate = useNavigate();
   const countCategories = async () => {
     const result = await categoryService.count();
@@ -50,10 +54,8 @@ export const Category: React.FC<{}> = () => {
         />
       );
     } else {
-      console.log("Si hay categorias");
+      return <CategoryCard />;
     }
-
-    return <div className="app-container-state"></div>;
   };
 
   return (
@@ -99,21 +101,17 @@ export const CreateContent: React.FC<{
     }
   };
 
-
-  useEffect ( ( )=>{
-    if(imageUpload!==undefined && imageUpload!==null ){
-
-       setbuttonState(true);
-       console.log(buttonState);
-    }else{
+  useEffect(() => {
+    if (imageUpload !== undefined && imageUpload !== null) {
+      setbuttonState(true);
+      console.log(buttonState);
+    } else {
       setbuttonState(false);
-       console.log(buttonState);
+      console.log(buttonState);
       setUrlState(false);
-      }
+    }
     console.log(imageUpload);
-  },[imageUpload] );
-
-
+  }, [imageUpload]);
 
   const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
@@ -122,40 +120,37 @@ export const CreateContent: React.FC<{
   };
 
   const uploadImage = async () => {
-    if (imageUpload === null || imageUpload===undefined) {
+    if (imageUpload === null || imageUpload === undefined) {
       alert("No se seleccionó ningún archivo");
       return <div></div>;
-    }else{
-      const imageRef = await ref(storage, `category/${imageUpload.name + v4()}`);
+    } else {
+      const imageRef = await ref(
+        storage,
+        `category/${imageUpload.name + v4()}`
+      );
       await uploadBytes(imageRef, imageUpload).then(() => {
         console.log("llego");
       });
-  
+
       getDownloadURL(ref(storage, `category/${imageRef.name}`)).then((url) => {
         console.log(url);
         setimageUrl(url);
         setUrlState(true);
-  
-  
       });
-  
-      setUrlState(true);      
-    }
 
+      setUrlState(true);
+    }
   };
 
   const createCategory = async () => {
-      if(nameState===true && descriptionState ===true && urlState===true){
-        const result = await categoryService.create(name, description, imageUrl);
-        console.log(result);
-        alert("Registro exitoso");
-        navigate("/category");
-
-      }else{
-        alert("campos vacios");
-      }
-
-    
+    if (nameState === true && descriptionState === true && urlState === true) {
+      const result = await categoryService.create(name, description, imageUrl);
+      console.log(result);
+      alert("Registro exitoso");
+      navigate("/category");
+    } else {
+      alert("campos vacios");
+    }
   };
 
   return (
@@ -188,20 +183,16 @@ export const CreateContent: React.FC<{
           <label>Imagen</label>
           <input type="file" onChange={(event) => handleOnChange(event)} />
           <button onClick={uploadImage}>Upload Image</button>
-          {buttonState?(
+          {buttonState ? (
             <Button placeholder="Registrar" handleClick={createCategory} />
-            ):  (
-
+          ) : (
             <div></div>
-
-           )    }
-          
+          )}
         </div>
       </div>
       <div className="app-container-category-create-image">
         {mostrarImagen()}
       </div>
-
     </div>
   );
 };

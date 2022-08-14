@@ -1,10 +1,10 @@
 import axios from "axios";
-import { Category } from "../entities/category";
+import { CategoryData } from "../entities/category";
 
 const BASE_URL = "http://localhost:5000";
 
 const categoryService = {
-  list: async (): Promise<Category[] | null> => {
+  list: async (): Promise<CategoryData[] | null> => {
     try {
       const { data } = await axios.get(`${BASE_URL}/category/all`);
       return data.data;
