@@ -58,3 +58,13 @@ hr {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+
+.app-container-buttonModificar > svg {
+  color: darkblue;
+
+}
+
+.app-container-buttonEliminar > svg{
+ color:  crimson;
+}
