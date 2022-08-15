@@ -31,7 +31,7 @@ const dishesService = {
   ) => {
     try {
       const { data } = await axios({
-        url: `${BASE_URL}/category/create`,
+        url: `${BASE_URL}/dishes/create`,
         method: "post",
         data: {
           name: name,
@@ -47,4 +47,5 @@ const dishesService = {
     }
   },
 };
+
 export default dishesService;

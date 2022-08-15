@@ -15,7 +15,7 @@ import userService from "./services/user";
 
 import { Login } from "./pages/Login/login";
 import { Home, CreateCategory, EditCategory } from "./pages/Home/home";
-import { Platillo } from "./pages/platillo/platillo";
+import { CreatePlatillo, Platillo } from "./pages/platillo/platillo";
 
 function App() {
   const [adminLoggedIn, setadminLoggedIn] = useState(false);
@@ -70,7 +70,9 @@ function App() {
 
             <Route
               path="/platillo/create"
-              element={<Platillo handleauth={() => setadminLoggedIn(false)} />}
+              element={
+                <CreatePlatillo handleauth={() => setadminLoggedIn(false)} />
+              }
             />
           </>
         )}
