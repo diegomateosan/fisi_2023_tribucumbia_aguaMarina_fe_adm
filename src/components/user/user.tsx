@@ -29,47 +29,47 @@ import { idText } from "typescript";
 import { CreatePlatillo } from "../../pages/platillo/platillo";
 import userService from "../../services/user";
 
-// export const Category: React.FC<{}> = () => {
-//   const [existsEntrys, setExistsEntrys] = useState<boolean>(false);
+export const TablaUsuarios: React.FC<{}> = () => {
+  const [existsEntrys, setExistsEntrys] = useState<boolean>(false);
 
-//   const navigate = useNavigate();
-//   const countCategories = async () => {
-//     // cambiar aqui por dishes servidces
-//     const result = await categoryService.count(); 
-//     setExistsEntrys(result);
-//     console.log("Categories exists state: " + result);
-//   };
+  const navigate = useNavigate();
+  const countCategories = async () => {
+    // cambiar aqui por user servidces y agregar el count
+    const result = await categoryService.count(); 
+    setExistsEntrys(result);
+    console.log("Usuarios exists state: " + result);
+  };
 
-//   const handleClick = () => {
-//     navigate("/");
-//   };
+  const handleClick = () => {
+    navigate("/user");
+  };
 
-//   useEffect(() => {
-//     countCategories();
-//   }, [existsEntrys]);
+  useEffect(() => {
+    countCategories();
+  }, [existsEntrys]);
 
-//   const shownCategories = () => {
-//     if (!existsEntrys) {
-//       return (
-//         <NotItem
-//           placeholderItem="No existen categorías aún"
-//           placeholderAdv="para crear una nueva categoría"
-//           imgSrc="https://drive.google.com/uc?export=view&id=1EMGPkqSn8X0kmFh6jtiSMhqKeDXfamCH"
-//           altTittle="Not item Logo"
-//           onSubmit={handleClick}
-//         />
-//       );
-//     } else {
-//       return <label>HOLA MUNDO</label>;
-//     }
-//   };
+  const shownCategories = () => {
+    if (!existsEntrys) {
+      return (
+        <NotItem
+          placeholderItem="No existen categorías aún"
+          placeholderAdv="para crear una nueva categoría"
+          imgSrc="https://drive.google.com/uc?export=view&id=1EMGPkqSn8X0kmFh6jtiSMhqKeDXfamCH"
+          altTittle="Not item Logo"
+          onSubmit={handleClick}
+        />
+      );
+    } else {
+      return (<div></div>            )
+    }
+  };
 
-//   return (
-//     <div className="app-container-categories">
-//       {/* <div className="app-container-content">{shownCategories()}</div> */}
-//     </div>
-//   );
-// };
+  return (
+    <div className="app-container-categories">
+      {/* <div className="app-container-content">{shownCategories()}</div> */}
+    </div>
+  );
+};
 
 export const CreateUserContent: React.FC<{
   name: string;

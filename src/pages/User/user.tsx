@@ -8,7 +8,7 @@ import "./user.css";
 
 import { useNavigate } from "react-router-dom";
 import { CreatePlatilloContent } from "../../components/platilloConten/platillo";
-import { CreateUserContent } from "../../components/user/user";
+import { CreateUserContent, TablaUsuarios } from "../../components/user/user";
 
 
 export const User: React.FC<{
@@ -26,7 +26,7 @@ export const User: React.FC<{
             <HeaderButton placeholder="Usuario" handleClick={()=>navigate("/user/create")} nameButton="Crear Usuario"/>
           </div>
           <div className="app-container-category-content-category">
-                  {/* Cards  Usuario */}
+                 <TablaUsuarios/>
           </div>
           
         </div>

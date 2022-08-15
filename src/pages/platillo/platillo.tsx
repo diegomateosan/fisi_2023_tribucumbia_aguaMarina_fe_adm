@@ -7,7 +7,7 @@ import { HeaderBack ,HeaderButton } from "../../components/header/header";
 import "./platillo.css";
 
 import { useNavigate } from "react-router-dom";
-import { CreatePlatilloContent } from "../../components/platilloConten/platillo";
+import { CreatePlatilloContent, PLatilloListaLlamada } from "../../components/platilloConten/platillo";
 
 
 export const Platillo: React.FC<{
@@ -26,7 +26,7 @@ export const Platillo: React.FC<{
             <HeaderButton placeholder="Platillo" handleClick={()=>navigate("/platillo/create")} nameButton="Crear Platillo"/>
           </div>
           <div className="app-container-category-content-category">
-            {/* categoriasPlatillos  */}
+            <PLatilloListaLlamada/>
           </div>
           
         </div>

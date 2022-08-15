@@ -13,7 +13,7 @@ import { v4 } from "uuid";
 //Components
 import { NotItem } from "../notItem/notItem";
 import { Button } from "../button/button";
-import { CategoryCard } from "../dataCard/dataCard";
+import { CategoryCard, PlatilloCard } from "../dataCard/dataCard";
 
 //Services
 import categoryService from "../../services/category";
@@ -28,47 +28,50 @@ import { dblClick } from "@testing-library/user-event/dist/click";
 import { idText } from "typescript";
 import { CreatePlatillo } from "../../pages/platillo/platillo";
 
-// export const Category: React.FC<{}> = () => {
-//   const [existsEntrys, setExistsEntrys] = useState<boolean>(false);
+export const PLatilloListaLlamada: React.FC<{}> = () => {
+  const [existsEntrys, setExistsEntrys] = useState<boolean>(false);
 
-//   const navigate = useNavigate();
-//   const countCategories = async () => {
-//     // cambiar aqui por dishes servidces
-//     const result = await categoryService.count(); 
-//     setExistsEntrys(result);
-//     console.log("Categories exists state: " + result);
-//   };
+  const navigate = useNavigate();
+  const countCategories = async () => {
+    // cambiar aqui por dishes servidces
+    const result = await categoryService.count(); 
+    setExistsEntrys(result);
+    console.log("Categories exists state: " + result);
+  };
 
-//   const handleClick = () => {
-//     navigate("/category/create");
-//   };
+  const handleClick = () => {
+    navigate("/platillo/create");
+  };
 
-//   useEffect(() => {
-//     countCategories();
-//   }, [existsEntrys]);
+  useEffect(() => {
+    countCategories();
+  }, [existsEntrys]);
 
-//   const shownCategories = () => {
-//     if (!existsEntrys) {
-//       return (
-//         <NotItem
-//           placeholderItem="No existen categorías aún"
-//           placeholderAdv="para crear una nueva categoría"
-//           imgSrc="https://drive.google.com/uc?export=view&id=1EMGPkqSn8X0kmFh6jtiSMhqKeDXfamCH"
-//           altTittle="Not item Logo"
-//           onSubmit={handleClick}
-//         />
-//       );
-//     } else {
-//       return <label>HOLA MUNDO</label>;
-//     }
-//   };
+  const shownCategories = () => {
+    if (!existsEntrys) {
+      return (
+        <NotItem
+          placeholderItem="No existen platillos aún"
+          placeholderAdv="para crear un nuevo platillo"
+          imgSrc="https://drive.google.com/uc?export=view&id=1EMGPkqSn8X0kmFh6jtiSMhqKeDXfamCH"
+          altTittle="Not item Logo"
+          onSubmit={handleClick}
+        />
+        
+      );
+    } else {
+      return(<PlatilloCard/>) 
+    }
+  };
 
-//   return (
-//     <div className="app-container-categories">
-//       <div className="app-container-content">{shownCategories()}</div>
-//     </div>
-//   );
-// };
+  return (
+
+    
+    <div className="app-container-categories">
+      <div className="app-container-content">{shownCategories()}</div>
+    </div>
+  );
+};
 
 export const CreatePlatilloContent: React.FC<{
   name: string;
@@ -277,7 +280,7 @@ const evento = (event: React.ChangeEvent<HTMLSelectElement>) =>{
           label="Precío"
           placeholder="Ejemplo: 20.00 "
           leyendaError="La categoría debe contener como mínimo 6 caracteres"
-          expresionRegular={/[0-9]+[.]([1-9][0-9]|[00])$/}
+          expresionRegular={/[0-9]+[.]([1-9][0-9]|[0][0])$/}
         />
 
         <div className="app-container-platillo-create-category">
@@ -302,9 +305,6 @@ const evento = (event: React.ChangeEvent<HTMLSelectElement>) =>{
       <div className="app-container-platillo-create-image">
         {mostrarImagen()}
       </div>
-
-            <button onClick={()=>console.log(id_categoria)}>zasdas</button>
-
     </div>
   );
 };
