@@ -68,3 +68,6 @@ hr {
 .app-container-buttonEliminar > svg{
  color:  crimson;
 }
+.app-container-buttonDetalle > svg{
+  color:  greenyellow;
+ }

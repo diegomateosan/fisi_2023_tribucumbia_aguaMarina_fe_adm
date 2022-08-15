@@ -3,7 +3,7 @@ import React from "react";
 import "./button.css";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiFillGooglePlusCircle } from "react-icons/ai";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FaBars, FaEdit, FaTrashAlt } from "react-icons/fa";
 
 export const Button: React.FC<{
   handleClick: () => void;
@@ -23,6 +23,17 @@ export const ButtonModificar: React.FC<{
   return (
     <div className="app-container-buttonModificar">
       <FaEdit size={30} onClick={handleClick} />
+    </div>
+  );
+};
+
+export const ButtonDetalle: React.FC<{
+  handleClick: () => void;
+  placeholder: string;
+}> = ({ handleClick, placeholder }) => {
+  return (
+    <div className="app-container-buttonDetalle">
+      <FaBars size={30} onClick={handleClick} />
     </div>
   );
 };
