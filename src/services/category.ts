@@ -38,13 +38,12 @@ const categoryService = {
       return null;
     }
   },
-  showID: async (name : string) => {
-    
+  showID: async (name: string) => {
     try {
       const { data } = await axios({
         url: `${BASE_URL}/category/getID`,
         method: "post",
-        data: { 
+        data: {
           name: name,
         },
       });
@@ -54,8 +53,23 @@ const categoryService = {
     }
   },
 
-
-
+  edit: async (name: string, description: string, url: string, id: number) => {
+    try {
+      const { data } = await axios({
+        url: `${BASE_URL}/category/edit`,
+        method: "post",
+        data: {
+          name: name,
+          description: description,
+          url: url,
+          id: id,
+        },
+      });
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
 };
 
 export default categoryService;
