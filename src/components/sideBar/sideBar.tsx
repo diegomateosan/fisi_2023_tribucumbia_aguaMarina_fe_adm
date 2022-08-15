@@ -36,7 +36,7 @@ export const NavBar: React.FC<{
         <nav>
           <div className="app-container-user">
             <IoMdPerson size={28} />
-            <Link to="">Usuarios</Link>
+            <Link to="/user">Usuarios</Link>
           </div>
 
           <div className="app-container-category">

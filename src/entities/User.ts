@@ -1,13 +1,14 @@
 export interface UserDefault {
-  success: boolean;
-  message: string;
-  data: [
-    {
+
+ 
       id: number;
       name: string;
+      lastname: string;
       email: string;
+      gender : string;
+      dni: string;
+      phone_number:string ;
       password: string;
-    }
-  ];
-  statusCode: number;
+      id_profile: string;
+
 }

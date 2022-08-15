@@ -28,47 +28,47 @@ import { dblClick } from "@testing-library/user-event/dist/click";
 import { idText } from "typescript";
 import { CreatePlatillo } from "../../pages/platillo/platillo";
 
-export const Category: React.FC<{}> = () => {
-  const [existsEntrys, setExistsEntrys] = useState<boolean>(false);
+// export const Category: React.FC<{}> = () => {
+//   const [existsEntrys, setExistsEntrys] = useState<boolean>(false);
 
-  const navigate = useNavigate();
-  const countCategories = async () => {
-    // cambiar aqui por dishes servidces
-    const result = await categoryService.count(); 
-    setExistsEntrys(result);
-    console.log("Categories exists state: " + result);
-  };
+//   const navigate = useNavigate();
+//   const countCategories = async () => {
+//     // cambiar aqui por dishes servidces
+//     const result = await categoryService.count(); 
+//     setExistsEntrys(result);
+//     console.log("Categories exists state: " + result);
+//   };
 
-  const handleClick = () => {
-    navigate("/category/create");
-  };
+//   const handleClick = () => {
+//     navigate("/category/create");
+//   };
 
-  useEffect(() => {
-    countCategories();
-  }, [existsEntrys]);
+//   useEffect(() => {
+//     countCategories();
+//   }, [existsEntrys]);
 
-  const shownCategories = () => {
-    if (!existsEntrys) {
-      return (
-        <NotItem
-          placeholderItem="No existen categorías aún"
-          placeholderAdv="para crear una nueva categoría"
-          imgSrc="https://drive.google.com/uc?export=view&id=1EMGPkqSn8X0kmFh6jtiSMhqKeDXfamCH"
-          altTittle="Not item Logo"
-          onSubmit={handleClick}
-        />
-      );
-    } else {
-      return <label>HOLA MUNDO</label>;
-    }
-  };
+//   const shownCategories = () => {
+//     if (!existsEntrys) {
+//       return (
+//         <NotItem
+//           placeholderItem="No existen categorías aún"
+//           placeholderAdv="para crear una nueva categoría"
+//           imgSrc="https://drive.google.com/uc?export=view&id=1EMGPkqSn8X0kmFh6jtiSMhqKeDXfamCH"
+//           altTittle="Not item Logo"
+//           onSubmit={handleClick}
+//         />
+//       );
+//     } else {
+//       return <label>HOLA MUNDO</label>;
+//     }
+//   };
 
-  return (
-    <div className="app-container-categories">
-      <div className="app-container-content">{shownCategories()}</div>
-    </div>
-  );
-};
+//   return (
+//     <div className="app-container-categories">
+//       <div className="app-container-content">{shownCategories()}</div>
+//     </div>
+//   );
+// };
 
 export const CreatePlatilloContent: React.FC<{
   name: string;
@@ -223,9 +223,6 @@ const evento = (event: React.ChangeEvent<HTMLSelectElement>) =>{
     if(id_categoriaState===false){
       categoriaID(nombrecategory);
       setid_categoriaState(true);    
-    
-        CreatePlatillo();
-    
     }else{
       if (nameState === true && descriptionState === true && urlState === true && precioState===true && id_categoriaState===true ) {
         // mandar los datos del platillo  ojo no olvides los tipos 

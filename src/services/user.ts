@@ -8,7 +8,11 @@ const userService = {
     nameValue: string,
     emailValue: string,
     passwordvalue: string,
-    roleValue: string
+    roleValue: string,
+    phone : string,
+    gender: string,
+    dni : string,
+    lastname: string
   ): Promise<UserDefault[] | null> => {
     try {
       const { data } = await axios({
@@ -16,9 +20,13 @@ const userService = {
         method: "post",
         data: {
           name: nameValue,
+          lastname: lastname,
+          gender : gender,
           email: emailValue,
+          dni: dni,
+          phone: phone,
           password: passwordvalue,
-          role: roleValue,
+          role: roleValue
         },
       });
       return data;
