@@ -1,12 +1,12 @@
 .app-container-headerback{
-
-display: flex;
-flex-direction: row;
-border-bottom: 1px solid;
-align-items: center;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid;
+  align-items: center;
 }
 
 .app-container-headerButton{
+  width: 100%;
   border-bottom: 1px solid;
   height: 72.55px;
 }

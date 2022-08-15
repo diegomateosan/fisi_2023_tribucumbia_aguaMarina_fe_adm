@@ -3,11 +3,9 @@
   flex-direction: column;
   background: white;
   height: 100%;
-}
-
-.app-container-home {
   display: flex;
   flex-direction: row;
+  
 }
 
 .app-container-home > div {
@@ -18,19 +16,18 @@
 .app-container-category-content {
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
 }
-
 .app-container-navBar {
   height: 100%;
 }
 
 .app-container-category-content-category > div > div > div {
   display: grid;
-  grid-template-columns: repeat(3, 0.4fr);
-  justify-content: center;
-  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   align-items: center;
+
 }
 
 .app-container-edit-category {

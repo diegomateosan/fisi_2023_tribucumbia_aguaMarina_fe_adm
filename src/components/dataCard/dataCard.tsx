@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import categoryService from "../../services/category";
 import { CategoryData } from "../../entities/category";
-import { ButtonEliminar, ButtonModificar } from "../button/button";
+import { ButtonDetalle, ButtonEliminar, ButtonModificar } from "../button/button";
 import "./dataCard.css";
 import { useNavigate } from "react-router-dom";
 import { DishesDefault } from "../../entities/dishes";
@@ -34,7 +34,7 @@ export const CategoryCard: React.FC<{}> = () => {
   };
 
   return (
-    <div>
+    <div className='dataCard'>
       {categoryList?.map((data, idx) => (
         <div className="app-container-category-data-card" key={idx}>
           <div className="app-container-category-data-card-img" key={idx}>
@@ -48,7 +48,6 @@ export const CategoryCard: React.FC<{}> = () => {
               placeholder="Editar"
               handleClick={() => editCategory(data)}
             />
-
             <ButtonEliminar
               placeholder="Eliminar"
               handleClick={() => alert("hola")}
@@ -87,7 +86,7 @@ export const PlatilloCard: React.FC<{}> = () => {
   // };
 
   return (
-    <div>
+    <div className='dataCard'>
       {platilloList?.map((data, idx) => (
         <div className="app-container-category-data-card" key={idx}>
           <div className="app-container-category-data-card-img" key={idx}>
@@ -105,6 +104,10 @@ export const PlatilloCard: React.FC<{}> = () => {
             <ButtonModificar
               placeholder="Editar"
               handleClick={() => alert("Se edita")}
+            />
+            <ButtonDetalle 
+              placeholder="Detalle"
+              handleClick={() => alert("detalle")}
             />
 
             <ButtonEliminar
