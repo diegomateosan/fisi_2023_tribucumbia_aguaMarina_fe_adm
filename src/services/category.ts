@@ -38,6 +38,24 @@ const categoryService = {
       return null;
     }
   },
+  showID: async (name : string) => {
+    
+    try {
+      const { data } = await axios({
+        url: `${BASE_URL}/category/getID`,
+        method: "post",
+        data: { 
+          name: name,
+        },
+      });
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+
+
 };
 
 export default categoryService;

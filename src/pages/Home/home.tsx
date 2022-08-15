@@ -35,6 +35,8 @@ export const Home: React.FC<{
   );
 };
 
+
+
 export const CreateCategory: React.FC<{
   handleauth: () => void;
 }> = ({ handleauth }) => {
