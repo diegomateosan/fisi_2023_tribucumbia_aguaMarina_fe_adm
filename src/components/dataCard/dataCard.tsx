@@ -33,6 +33,17 @@ export const CategoryCard: React.FC<{}> = () => {
     });
   };
 
+  const DeleteCategory = async (category: CategoryData) => {
+    navigate("/category/delete", {
+      state: {
+        id: category.id,
+        name: category.name,
+        description: category.description,
+        image_url: category.image_url,
+      },
+    });
+  };
+
   return (
     <div>
       {categoryList?.map((data, idx) => (
@@ -51,7 +62,7 @@ export const CategoryCard: React.FC<{}> = () => {
 
             <ButtonEliminar
               placeholder="Eliminar"
-              handleClick={() => alert("hola")}
+              handleClick={() => DeleteCategory(data)}
             />
           </div>
         </div>
@@ -59,7 +70,6 @@ export const CategoryCard: React.FC<{}> = () => {
     </div>
   );
 };
-
 
 export const PlatilloCard: React.FC<{}> = () => {
   const [platilloList, setplatilloList] = useState<DishesDefault[] | null>([]);
@@ -70,7 +80,7 @@ export const PlatilloCard: React.FC<{}> = () => {
   }, []);
 
   const servicePLatillo = async () => {
-    const result = await  dishesService.list();
+    const result = await dishesService.list();
     setplatilloList(result);
     console.log(platilloList);
   };
@@ -100,7 +110,6 @@ export const PlatilloCard: React.FC<{}> = () => {
             <h2>{data.precio}</h2>
           </div>
 
-
           <div className="app-container-category-data-card-buttons">
             <ButtonModificar
               placeholder="Editar"
@@ -117,4 +126,3 @@ export const PlatilloCard: React.FC<{}> = () => {
     </div>
   );
 };
-

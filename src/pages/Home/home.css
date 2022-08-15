@@ -47,3 +47,7 @@
 .app-container-navBar {
   height: 100%;
 }
+
+.app-container-category-edit-form-input > div > div > div > input {
+  width: 66%;
+}

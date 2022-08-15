@@ -14,7 +14,12 @@ import { useState, useEffect } from "react";
 import userService from "./services/user";
 
 import { Login } from "./pages/Login/login";
-import { Home, CreateCategory, EditCategory } from "./pages/Home/home";
+import {
+  Home,
+  CreateCategory,
+  EditCategory,
+  DeleteCategory,
+} from "./pages/Home/home";
 import { CreatePlatillo, Platillo } from "./pages/platillo/platillo";
 import { CreateUser, User } from "./pages/User/user";
 
@@ -58,6 +63,13 @@ function App() {
             />
 
             <Route
+              path="/category/delete"
+              element={
+                <DeleteCategory handleauth={() => setadminLoggedIn(false)} />
+              }
+            />
+
+            <Route
               path="/category/edit"
               element={
                 <EditCategory handleauth={() => setadminLoggedIn(false)} />
@@ -80,18 +92,13 @@ function App() {
               path="/user"
               element={<User handleauth={() => setadminLoggedIn(false)} />}
             />
-            
-              <Route
+
+            <Route
               path="/user/create"
               element={
                 <CreateUser handleauth={() => setadminLoggedIn(false)} />
               }
             />
-
-
-
-
-
           </>
         )}
 
