@@ -20,14 +20,11 @@
   height: 100%;
 }
 
-.app-container-navBar{
+.app-container-navBar {
   height: 100%;
-
-
-  
 }
 
-.app-container-category-content-category> div > div >div {
+.app-container-category-content-category > div > div > div {
   display: grid;
   grid-template-columns: repeat(3, 0.4fr);
   justify-content: center;
@@ -36,3 +33,17 @@
   align-items: center;
 }
 
+.app-container-edit-category {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.app-container-edit-category > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container-navBar {
+  height: 100%;
+}

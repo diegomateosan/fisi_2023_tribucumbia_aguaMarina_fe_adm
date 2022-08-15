@@ -6,3 +6,7 @@ export interface CategoryData {
   description: string;
   image_url: string;
 }
+
+export interface CategoryState {
+  state: CategoryData;
+}

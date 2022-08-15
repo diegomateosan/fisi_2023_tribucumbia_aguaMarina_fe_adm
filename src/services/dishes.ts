@@ -47,3 +47,4 @@ const dishesService = {
     }
   },
 };
+export default dishesService;

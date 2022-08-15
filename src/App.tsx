@@ -14,8 +14,8 @@ import { useState, useEffect } from "react";
 import userService from "./services/user";
 
 import { Login } from "./pages/Login/login";
-import { Home, CreateCategory } from "./pages/Home/home";
-import { Platillo} from "./pages/platillo/platillo";
+import { Home, CreateCategory, EditCategory } from "./pages/Home/home";
+import { Platillo } from "./pages/platillo/platillo";
 
 function App() {
   const [adminLoggedIn, setadminLoggedIn] = useState(false);
@@ -55,21 +55,23 @@ function App() {
                 <CreateCategory handleauth={() => setadminLoggedIn(false)} />
               }
             />
-          <Route
+
+            <Route
+              path="/category/edit"
+              element={
+                <EditCategory handleauth={() => setadminLoggedIn(false)} />
+              }
+            />
+
+            <Route
               path="/platillo"
-              element={
-                <Platillo handleauth={() => setadminLoggedIn(false)} />
-              }
+              element={<Platillo handleauth={() => setadminLoggedIn(false)} />}
             />
 
-          <Route
+            <Route
               path="/platillo/create"
-              element={
-                <Platillo handleauth={() => setadminLoggedIn(false)} />
-              }
+              element={<Platillo handleauth={() => setadminLoggedIn(false)} />}
             />
-
-
           </>
         )}
 

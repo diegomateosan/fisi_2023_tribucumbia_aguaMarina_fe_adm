@@ -7,8 +7,10 @@ export const Login: React.FC<{
   handleauth: () => void;
 }> = ({ handleauth }) => {
   return (
-    <div className="app-container-page-login-container">
-      <LoginContainer handleauth={() => handleauth()} />
+    <div className="app-container-login">
+      <div className="app-container-page-login-container">
+        <LoginContainer handleauth={() => handleauth()} />
+      </div>
     </div>
   );
 };
