@@ -4,6 +4,28 @@ import { UserDefault } from "../entities/User";
 const BASE_URL = "http://localhost:5000";
 
 const userService = {
+
+  list: async (): Promise<UserDefault[] | null> => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/auth/all`);
+      return data.data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  count: async () => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/auth/count`);
+      return data.data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+
+
+
   register: async (
     nameValue: string,
     emailValue: string,

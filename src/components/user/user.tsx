@@ -28,6 +28,7 @@ import { dblClick } from "@testing-library/user-event/dist/click";
 import { idText } from "typescript";
 import { CreatePlatillo } from "../../pages/platillo/platillo";
 import userService from "../../services/user";
+import { TablaUser } from "../tabla/tabla";
 
 export const TablaUsuarios: React.FC<{}> = () => {
   const [existsEntrys, setExistsEntrys] = useState<boolean>(false);
@@ -66,7 +67,7 @@ export const TablaUsuarios: React.FC<{}> = () => {
 
   return (
     <div className="app-container-categories">
-      {/* <div className="app-container-content">{shownCategories()}</div> */}
+      <TablaUser/>
     </div>
   );
 };

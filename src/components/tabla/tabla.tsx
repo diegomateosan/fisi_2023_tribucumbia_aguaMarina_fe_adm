@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import categoryService from "../../services/category";
 import { CategoryData } from "../../entities/category";
 import { ButtonEliminar, ButtonModificar } from "../button/button";
-import "./dataCard.css";
+import "./tabla.css";
 import { useNavigate } from "react-router-dom";
 import { DishesDefault } from "../../entities/dishes";
 import dishesService from "../../services/dishes";
@@ -17,14 +17,14 @@ export const TablaUser: React.FC<{}> = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-    //   servicesUsuario();
+        serviceUsuario();
     }, []);
   
-    // const serviceUsuario = async () => {
-    //   const result = await   userService.list();
-    //   setuserList(result);
-    //   console.log(platilloList);
-    // };
+    const serviceUsuario = async () => {
+      const result = await   userService.list();
+      setuserList(result);
+      console.log(userList);
+    };
   
     // const editCategory = async (category: CategoryData) => {
     //   navigate("/platillo/edit", {
@@ -68,9 +68,7 @@ export const TablaUser: React.FC<{}> = () => {
                                                     Editar
                                                 </li>
 
-                                                <li className="btns-manage-detail">
-                                                    Detalles
-                                                </li>
+                                              
                                                 <li className="btns-manage-delete">
                                                     Eliminar
                                                 </li>
