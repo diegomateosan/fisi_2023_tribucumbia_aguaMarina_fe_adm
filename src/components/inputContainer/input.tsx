@@ -273,7 +273,7 @@ export const StaticInput: React.FC<{
           <label>{placeholder}</label>
         </div>
         <div className="app-container-inputAndIcon">
-          <input type={type} value={value} id="static" />
+          <input type={type} value={value} disabled />
         </div>
       </div>
     </div>

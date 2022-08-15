@@ -70,6 +70,21 @@ const categoryService = {
       return null;
     }
   },
+
+  delete: async (id: number) => {
+    try {
+      const { data } = await axios({
+        url: `${BASE_URL}/category/delete`,
+        method: "post",
+        data: {
+          id: id,
+        },
+      });
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
 };
 
 export default categoryService;

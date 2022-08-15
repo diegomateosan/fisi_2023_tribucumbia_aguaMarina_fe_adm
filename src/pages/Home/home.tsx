@@ -251,6 +251,11 @@ export const DeleteCategory: React.FC<{
   const [description, setDescriptionState] = useState(state.description);
   const [imageUrl, setimageUrl] = useState(state.image_url);
 
+  const BorrarCategoria = async () => {
+    const result = await categoryService.delete(id);
+    console.log(result);
+  };
+
   return (
     <div className="app-container-edit-category">
       <div className="app-container-navBar">
@@ -271,6 +276,10 @@ export const DeleteCategory: React.FC<{
                 type="text"
                 value={description}
                 placeholder="Descripción"
+              />
+              <Button
+                placeholder="Borrar categoría"
+                handleClick={BorrarCategoria}
               />
             </div>
           </div>
