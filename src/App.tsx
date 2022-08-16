@@ -26,7 +26,7 @@ import {
   EditPlatillo,
   Platillo,
 } from "./pages/platillo/platillo";
-import { CreateUser, User } from "./pages/User/user";
+import { BorrarUser, CreateUser, User } from "./pages/User/user";
 
 function App() {
   const [adminLoggedIn, setadminLoggedIn] = useState(false);
@@ -118,6 +118,17 @@ function App() {
                 <CreateUser handleauth={() => setadminLoggedIn(false)} />
               }
             />
+
+              
+            <Route
+              path="/user/delete"
+              element={
+                <BorrarUser handleauth={() => setadminLoggedIn(false)} />
+              }
+            />
+
+
+
           </>
         )}
 

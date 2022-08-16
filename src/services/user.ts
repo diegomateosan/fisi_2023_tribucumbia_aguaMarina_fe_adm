@@ -103,6 +103,24 @@ const userService = {
       return null;
     }
   },
+
+  delete: async (id: number) => {
+    try {
+      const { data } = await axios({
+        url: `${BASE_URL}/auth/delete`,
+        method: "post",
+        data: {
+          id: id,
+        },
+      });
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+
+
 };
 
 export default userService;

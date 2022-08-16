@@ -25,17 +25,22 @@ export const TablaUser: React.FC<{}> = () => {
       setuserList(result);
       console.log(userList);
     };
-  
-    // const editCategory = async (category: CategoryData) => {
-    //   navigate("/platillo/edit", {
-    //     state: {
-    //       id: category.id,
-    //       name: category.name,
-    //       description: category.description,
-    //       image_url: category.image_url,
-    //     },
-    //   });
-    // };
+    
+    const DeleteUsuario = async (user: UserDefault) => {
+        navigate("/user/delete", {
+          state: {
+            id: user.id,
+           name: user.name,
+           lastname : user.lastname,
+           dni: user.dni,
+           gender: user.gender,
+           id_profile : user.id_profile,
+           phone_number : user.phone_number,
+           email :user.email
+
+          },
+        });
+      };
   
     return (
       <div className="app-container-user-tabla">
@@ -64,14 +69,11 @@ export const TablaUser: React.FC<{}> = () => {
                                         <td>{ data.id_profile}</td>
                                         <td className="wrapper-btns-manage">
                                             <ul className="btns-manage">
-                                                <li className="btns-manage-edit">
+                                                <li className="btns-manage-edit" onClick={()=>DeleteUsuario(data)} >
                                                     Editar
                                                 </li>
 
                                               
-                                                <li className="btns-manage-delete">
-                                                    Eliminar
-                                                </li>
                                             </ul>
                                         </td>
                                     </tr>

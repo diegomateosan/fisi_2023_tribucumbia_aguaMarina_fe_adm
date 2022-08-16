@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { NavBar } from "../../components/sideBar/sideBar";
 import { HeaderBack, HeaderButton } from "../../components/header/header";
 
 import "./user.css";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CreatePlatilloContent } from "../../components/platilloConten/platillo";
 import { CreateUserContent, TablaUsuarios } from "../../components/user/user";
+import { UserState } from "../../entities/User";
+import userService from "../../services/user";
+import { StaticInput } from "../../components/inputContainer/input";
+import { Button } from "../../components/button/button";
 
 export const User: React.FC<{
   handleauth: () => void;
@@ -105,4 +109,111 @@ export const CreateUser: React.FC<{
       </div>
     </div>
   );
+
+    
+
+
+
 };
+
+
+export const BorrarUser: React.FC<{
+  handleauth: () => void;
+}> = ({ handleauth }) => {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const { state } = location as UserState;
+
+  const [name, setName] = useState(state.name);
+  const [lastname, setDescription] = useState(state.lastname);
+  const [dni, setdni] = useState(state.dni);
+  const [gender, setgender] = useState(state.gender);
+  const [phone_number, setphone_number] = useState(state.phone_number);
+  const [email, setemail] = useState(state.email);
+  const [id, setid] = useState(state.id);
+  const [id_profile, setid_profile] = useState(state.id_profile);
+ 
+  
+  const BorrarUsuario = async () => {
+    const result = await userService.delete(id);
+    console.log(result);
+    alert("Usuario Borrado con exito")
+    navigate("/user");
+  };
+
+  const generoCompleto =()=>{
+      if(gender==="F")
+     setgender("Femenino");
+      else
+      setgender("Masculino");
+  }
+
+  const RolCompleto =()=>{
+    if(id_profile==="ADM")
+    setid_profile("Administrador");
+    else
+    setid_profile("Cliente");
+}
+
+useEffect(()=>{
+generoCompleto();
+RolCompleto();
+
+
+
+},[]);
+
+
+  return (
+    <div className="app-container-edit-category">
+      <div className="app-container-navBar">
+        <NavBar handleauth={handleauth} />
+      </div>
+
+      <div className="app-container-category-content">
+        <div className="app-container-category-content-header">
+          <HeaderBack
+            placeholder="Eliminar Usuario"
+            handleClick={() => navigate("/user")}
+          />
+          <div className="app-container-category-edit-form">
+            <div className="app-container-category-edit-form-input">
+              <StaticInput type="text" value={name} placeholder="Nombre" />
+              <StaticInput
+                type="text"
+                value={lastname}
+                placeholder="Apellido"
+              />
+              <StaticInput type="text" value={email} placeholder="Correo" />
+
+              <StaticInput
+                type="text"
+                value={phone_number}
+                placeholder="Numero de Celular"
+              />
+
+              <StaticInput
+                type="text"
+                value={gender}
+                placeholder="Género"
+              />
+
+              <StaticInput
+                type="text"
+                value={id_profile }
+                placeholder="Rol"
+              />
+
+              <Button
+                placeholder="Borrar Usuario"
+                handleClick={BorrarUsuario}
+              />
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  );
+  };

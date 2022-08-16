@@ -12,3 +12,10 @@ export interface UserDefault {
       id_profile: string;
 
 }
+
+
+
+export interface UserState {
+      state: UserDefault;
+    }
+    
