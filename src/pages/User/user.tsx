@@ -109,13 +109,7 @@ export const CreateUser: React.FC<{
       </div>
     </div>
   );
-
-    
-
-
-
 };
-
 
 export const BorrarUser: React.FC<{
   handleauth: () => void;
@@ -133,37 +127,28 @@ export const BorrarUser: React.FC<{
   const [email, setemail] = useState(state.email);
   const [id, setid] = useState(state.id);
   const [id_profile, setid_profile] = useState(state.id_profile);
- 
-  
+
   const BorrarUsuario = async () => {
     const result = await userService.delete(id);
     console.log(result);
-    alert("Usuario Borrado con exito")
+    alert("Usuario Borrado con exito");
     navigate("/user");
   };
 
-  const generoCompleto =()=>{
-      if(gender==="F")
-     setgender("Femenino");
-      else
-      setgender("Masculino");
-  }
+  const generoCompleto = () => {
+    if (gender === "F") setgender("Femenino");
+    else setgender("Masculino");
+  };
 
-  const RolCompleto =()=>{
-    if(id_profile==="ADM")
-    setid_profile("Administrador");
-    else
-    setid_profile("Cliente");
-}
+  const RolCompleto = () => {
+    if (id_profile === "ADM") setid_profile("Administrador");
+    else setid_profile("Cliente");
+  };
 
-useEffect(()=>{
-generoCompleto();
-RolCompleto();
-
-
-
-},[]);
-
+  useEffect(() => {
+    generoCompleto();
+    RolCompleto();
+  }, []);
 
   return (
     <div className="app-container-edit-category">
@@ -193,17 +178,9 @@ RolCompleto();
                 placeholder="Numero de Celular"
               />
 
-              <StaticInput
-                type="text"
-                value={gender}
-                placeholder="Género"
-              />
+              <StaticInput type="text" value={gender} placeholder="Género" />
 
-              <StaticInput
-                type="text"
-                value={id_profile }
-                placeholder="Rol"
-              />
+              <StaticInput type="text" value={id_profile} placeholder="Rol" />
 
               <Button
                 placeholder="Borrar Usuario"
@@ -211,9 +188,8 @@ RolCompleto();
               />
             </div>
           </div>
-         
         </div>
       </div>
     </div>
   );
-  };
+};

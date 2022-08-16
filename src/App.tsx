@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     VerifyLoggedIn();
-  }, [adminLoggedIn]);
+  }, []);
 
   return (
     <BrowserRouter>
@@ -119,16 +119,12 @@ function App() {
               }
             />
 
-              
             <Route
               path="/user/delete"
               element={
                 <BorrarUser handleauth={() => setadminLoggedIn(false)} />
               }
             />
-
-
-
           </>
         )}
 

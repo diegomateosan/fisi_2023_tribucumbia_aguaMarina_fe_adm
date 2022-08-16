@@ -63,7 +63,7 @@ export const CreateCategory: React.FC<{
   return (
     <div className="app-container-home">
       <div className="app-container-navBar">
-        <NavBar handleauth={handleauth} />
+        <NavBar handleauth={() => handleauth()} />
       </div>
 
       <div className="app-container-category-content">
