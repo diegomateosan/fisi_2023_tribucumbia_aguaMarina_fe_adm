@@ -56,7 +56,10 @@ export const CategoryCard: React.FC<{}> = () => {
             <img src={data.image_url} alt="zzz" />
           </div>
           <div className="app-container-category-data-card-name">
-            <h2>{data.name}</h2>
+            <li className="app-container-category-data-card-name-li">
+              <div className="left">Nombre:</div>
+              <div className="right">{data.name}</div>
+            </li>
           </div>
           <div className="app-container-category-data-card-buttons">
             <ButtonModificar
@@ -124,10 +127,14 @@ export const PlatilloCard: React.FC<{}> = () => {
             <img src={data.imagen} alt="Imagen no Encontrada" />
           </div>
           <div className="app-container-category-data-card-name">
-            <h2>{data.nombre}</h2>
-          </div>
-          <div className="app-container-category-data-card-name">
-            <h2>{data.precio}</h2>
+            <li className="app-container-category-data-card-name-li">
+              <div className="left">Nombre:</div>
+              <div className="right">{data.nombre}</div>
+            </li>
+            <li className="app-container-category-data-card-name-li">
+              <div className="left">Precio:</div>
+              <div className="right">{data.precio}</div>
+            </li>
           </div>
 
           <div className="app-container-category-data-card-buttons">
