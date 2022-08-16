@@ -21,6 +21,7 @@ import {
   DeleteCategory,
 } from "./pages/Home/home";
 import {
+  BorrarPlatillo,
   CreatePlatillo,
   EditPlatillo,
   Platillo,
@@ -96,6 +97,13 @@ function App() {
               path="platillo/edit"
               element={
                 <EditPlatillo handleauth={() => setadminLoggedIn(false)} />
+              }
+            />
+
+            <Route
+              path="platillo/delete"
+              element={
+                <BorrarPlatillo handleauth={() => setadminLoggedIn(false)} />
               }
             />
 

@@ -11,7 +11,10 @@ import {
   PLatilloListaLlamada,
 } from "../../components/platilloConten/platillo";
 import { DishesState } from "../../entities/dishes";
-import { InputDefault } from "../../components/inputContainer/input";
+import {
+  InputDefault,
+  StaticInput,
+} from "../../components/inputContainer/input";
 
 import { storage } from "../../FireBase/firebase";
 import {
@@ -25,6 +28,7 @@ import { v4 } from "uuid";
 import { Button } from "../../components/button/button";
 import categoryService from "../../services/category";
 import { CategoryData } from "../../entities/category";
+import dishesService from "../../services/dishes";
 
 export const Platillo: React.FC<{
   handleauth: () => void;
@@ -111,23 +115,22 @@ export const EditPlatillo: React.FC<{
   const { state } = location as DishesState;
 
   const [name, setName] = useState(state.nombre);
-  const [nameState, setNameState] = useState(false);
+  const [nameState, setNameState] = useState(true);
   const [description, setDescription] = useState(state.descripcion);
-  const [descriptionState, setDescriptionState] = useState(false);
+  const [descriptionState, setDescriptionState] = useState(true);
   const [precio, setprecio] = useState(state.precio);
-  const [precioState, setprecioState] = useState(false);
+  const [precioState, setprecioState] = useState(true);
   const [id_categoria, setid_categoria] = useState(state.id_categoria);
-  const [id_categoriaState, setid_categoriaState] = useState(false);
+  const [id_categoriaState, setid_categoriaState] = useState(true);
   const [categoria, setCategoria] = useState<string>("");
-  const [idOferta, setIdOferta] = useState();
-  const [idOfertaState, setIdOfertaState] = useState(false);
+  const [id, setId] = useState(state.id);
   const [categoryList, setCategoryList] = useState<CategoryData[] | null>([]);
 
   const [imageUrl, setimageUrl] = useState(state.imagen);
   const [urlState, setUrlState] = useState(true);
 
   const [imageUpload, setImageUpload] = useState<File | null>(null);
-  const [buttonState, setbuttonState] = useState(false);
+  const [buttonState, setbuttonState] = useState(true);
 
   const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
@@ -231,7 +234,31 @@ export const EditPlatillo: React.FC<{
     }
   };
 
-  const EditarPlatillo = () => {};
+  const EditarPlatillo = async () => {
+    if (id_categoriaState === false) {
+      categoriaID(categoria);
+      setid_categoriaState(true);
+    } else {
+      if (
+        nameState === true &&
+        descriptionState === true &&
+        urlState === true &&
+        precioState === true &&
+        id_categoriaState === true
+      ) {
+        const result = await dishesService.edit(
+          name,
+          description,
+          imageUrl,
+          Number(precio),
+          Number(id_categoria),
+          Number(id)
+        );
+        console.log(result);
+        alert("Platillo editado");
+      }
+    }
+  };
 
   return (
     <div className="app-container-edit-category">
@@ -307,6 +334,81 @@ export const EditPlatillo: React.FC<{
             <div className="app-container-category-create-image">
               {mostrarImagen()}
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const BorrarPlatillo: React.FC<{
+  handleauth: () => void;
+}> = ({ handleauth }) => {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const { state } = location as DishesState;
+
+  const [name, setName] = useState(state.nombre);
+  const [description, setDescription] = useState(state.descripcion);
+  const [precio, setprecio] = useState(state.precio);
+  const [id_categoria, setid_categoria] = useState(state.id_categoria);
+  const [categoria, setCategoria] = useState<string>("");
+  const [id, setId] = useState(state.id);
+  const [categoryList, setCategoryList] = useState<CategoryData[] | null>([]);
+  const [imageUrl, setimageUrl] = useState(state.imagen);
+
+  const mostrarImagen = () => {
+    return (
+      <div className="app-container-create-image-uploaded">
+        <label>Previsualización de la Imagen </label>
+        <img src={imageUrl} alt="image just uploaded" />
+      </div>
+    );
+  };
+
+  const BorrarPlatillo = async () => {
+    const result = await dishesService.delete(id);
+    console.log(result);
+  };
+
+  return (
+    <div className="app-container-edit-category">
+      <div className="app-container-navBar">
+        <NavBar handleauth={handleauth} />
+      </div>
+
+      <div className="app-container-category-content">
+        <div className="app-container-category-content-header">
+          <HeaderBack
+            placeholder="Eliminar categorías"
+            handleClick={() => navigate("/category")}
+          />
+          <div className="app-container-category-edit-form">
+            <div className="app-container-category-edit-form-input">
+              <StaticInput type="text" value={id} placeholder="id" />
+              <StaticInput type="text" value={name} placeholder="Nombre" />
+              <StaticInput
+                type="text"
+                value={description}
+                placeholder="Descripción"
+              />
+              <StaticInput type="number" value={precio} placeholder="Precio" />
+
+              <StaticInput
+                type="number"
+                value={id_categoria}
+                placeholder="Categoria"
+              />
+
+              <Button
+                placeholder="Borrar categoría"
+                handleClick={BorrarPlatillo}
+              />
+            </div>
+          </div>
+          <div className="app-container-category-create-image">
+            {mostrarImagen()}
           </div>
         </div>
       </div>

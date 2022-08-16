@@ -53,7 +53,6 @@ const dishesService = {
     image: string,
     price: number,
     idcategory: number,
-    idoffer: number,
     id: number
   ) => {
     try {
@@ -66,7 +65,6 @@ const dishesService = {
           image: image,
           price: price,
           idcategory: idcategory,
-          idoffer: idoffer,
           id: id,
         },
       });

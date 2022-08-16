@@ -106,7 +106,7 @@ export const PlatilloCard: React.FC<{}> = () => {
   };
 
   const DeletePlatillo = async (platillo: DishesDefault) => {
-    navigate("/category/delete", {
+    navigate("/platillo/delete", {
       state: {
         id: platillo.id,
         nombre: platillo.nombre,

@@ -99,9 +99,9 @@ export const EditCategory: React.FC<{
 
   const [id, setId] = useState(state.id);
   const [name, setName] = useState(state.name);
-  const [nameState, setNameState] = useState(false);
+  const [nameState, setNameState] = useState(true);
   const [description, setDescription] = useState(state.description);
-  const [descriptionState, setDescriptionState] = useState(false);
+  const [descriptionState, setDescriptionState] = useState(true);
   const [imageUrl, setimageUrl] = useState(state.image_url);
   const [urlState, setUrlState] = useState(true);
 
@@ -256,6 +256,15 @@ export const DeleteCategory: React.FC<{
     console.log(result);
   };
 
+  const mostrarImagen = () => {
+    return (
+      <div className="app-container-create-image-uploaded">
+        <label>Previsualización de la Imagen </label>
+        <img src={imageUrl} alt="image just uploaded" />
+      </div>
+    );
+  };
+
   return (
     <div className="app-container-edit-category">
       <div className="app-container-navBar">
@@ -265,7 +274,7 @@ export const DeleteCategory: React.FC<{
       <div className="app-container-category-content">
         <div className="app-container-category-content-header">
           <HeaderBack
-            placeholder="Editar categorías"
+            placeholder="Eliminar categorías"
             handleClick={() => navigate("/category")}
           />
           <div className="app-container-category-edit-form">
@@ -282,6 +291,9 @@ export const DeleteCategory: React.FC<{
                 handleClick={BorrarCategoria}
               />
             </div>
+          </div>
+          <div className="app-container-category-create-image">
+            {mostrarImagen()}
           </div>
         </div>
       </div>
