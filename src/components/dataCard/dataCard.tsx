@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import categoryService from "../../services/category";
 import { CategoryData } from "../../entities/category";
-import { ButtonDetalle, ButtonEliminar, ButtonModificar } from "../button/button";
+import {
+  ButtonDetalle,
+  ButtonEliminar,
+  ButtonModificar,
+} from "../button/button";
 import "./dataCard.css";
 import { useNavigate } from "react-router-dom";
 import { DishesDefault } from "../../entities/dishes";
@@ -34,14 +38,17 @@ export const CategoryCard: React.FC<{}> = () => {
   };
 
   return (
-    <div className='dataCard'>
+    <div className="dataCard">
       {categoryList?.map((data, idx) => (
         <div className="app-container-category-data-card" key={idx}>
           <div className="app-container-category-data-card-img" key={idx}>
             <img src={data.image_url} alt="zzz" />
           </div>
           <div className="app-container-category-data-card-name">
-            <h2>{data.name}</h2>
+            <li className="app-container-category-data-card-name-li">
+              <div className="left">Nombre:</div>
+              <div className="right">{data.name}</div>
+            </li>
           </div>
           <div className="app-container-category-data-card-buttons">
             <ButtonModificar
@@ -59,7 +66,6 @@ export const CategoryCard: React.FC<{}> = () => {
   );
 };
 
-
 export const PlatilloCard: React.FC<{}> = () => {
   const [platilloList, setplatilloList] = useState<DishesDefault[] | null>([]);
   const navigate = useNavigate();
@@ -69,7 +75,7 @@ export const PlatilloCard: React.FC<{}> = () => {
   }, []);
 
   const servicePLatillo = async () => {
-    const result = await  dishesService.list();
+    const result = await dishesService.list();
     setplatilloList(result);
     console.log(platilloList);
   };
@@ -86,26 +92,29 @@ export const PlatilloCard: React.FC<{}> = () => {
   // };
 
   return (
-    <div className='dataCard'>
+    <div className="dataCard">
       {platilloList?.map((data, idx) => (
         <div className="app-container-category-data-card" key={idx}>
           <div className="app-container-category-data-card-img" key={idx}>
             <img src={data.imagen} alt="Imagen no Encontrada" />
           </div>
           <div className="app-container-category-data-card-name">
-            <h2>{data.nombre}</h2>
+            <li className="app-container-category-data-card-name-li">
+              <div className="left">Nombre:</div>
+              <div className="right">{data.nombre}</div>
+            </li>
+            <li className="app-container-category-data-card-name-li">
+              <div className="left">Precio:</div>
+              <div className="right">{data.precio}</div>
+            </li>
           </div>
-          <div className="app-container-category-data-card-name">
-            <h2>{data.precio}</h2>
-          </div>
-
 
           <div className="app-container-category-data-card-buttons">
             <ButtonModificar
               placeholder="Editar"
               handleClick={() => alert("Se edita")}
             />
-            <ButtonDetalle 
+            <ButtonDetalle
               placeholder="Detalle"
               handleClick={() => alert("detalle")}
             />
@@ -120,4 +129,3 @@ export const PlatilloCard: React.FC<{}> = () => {
     </div>
   );
 };
-
