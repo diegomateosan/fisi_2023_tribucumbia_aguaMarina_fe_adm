@@ -46,6 +46,50 @@ const dishesService = {
       return null;
     }
   },
+
+  edit: async (
+    name: string,
+    description: string,
+    image: string,
+    price: number,
+    idcategory: number,
+    idoffer: number,
+    id: number
+  ) => {
+    try {
+      const { data } = await axios({
+        url: `${BASE_URL}/dishes/edit`,
+        method: "post",
+        data: {
+          name: name,
+          description: description,
+          image: image,
+          price: price,
+          idcategory: idcategory,
+          idoffer: idoffer,
+          id: id,
+        },
+      });
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  delete: async (id: number) => {
+    try {
+      const { data } = await axios({
+        url: `${BASE_URL}/dishes/delete`,
+        method: "post",
+        data: {
+          id: id,
+        },
+      });
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
 };
 
 export default dishesService;

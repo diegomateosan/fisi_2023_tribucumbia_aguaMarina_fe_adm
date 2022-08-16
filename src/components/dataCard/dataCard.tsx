@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import categoryService from "../../services/category";
 import { CategoryData } from "../../entities/category";
-import { ButtonDetalle, ButtonEliminar, ButtonModificar } from "../button/button";
+import {
+  ButtonDetalle,
+  ButtonEliminar,
+  ButtonModificar,
+} from "../button/button";
 import "./dataCard.css";
 import { useNavigate } from "react-router-dom";
 import { DishesDefault } from "../../entities/dishes";
@@ -45,7 +49,7 @@ export const CategoryCard: React.FC<{}> = () => {
   };
 
   return (
-    <div className='dataCard'>
+    <div className="dataCard">
       {categoryList?.map((data, idx) => (
         <div className="app-container-category-data-card" key={idx}>
           <div className="app-container-category-data-card-img" key={idx}>
@@ -84,19 +88,36 @@ export const PlatilloCard: React.FC<{}> = () => {
     console.log(platilloList);
   };
 
-  // const editCategory = async (category: CategoryData) => {
-  //   navigate("/platillo/edit", {
-  //     state: {
-  //       id: category.id,
-  //       name: category.name,
-  //       description: category.description,
-  //       image_url: category.image_url,
-  //     },
-  //   });
-  // };
+  const editPlatillo = async (platillo: DishesDefault) => {
+    navigate("/platillo/edit", {
+      state: {
+        id: platillo.id,
+        nombre: platillo.nombre,
+        descripcion: platillo.descripcion,
+        imagen: platillo.imagen,
+        precio: platillo.precio,
+        id_categoria: platillo.id_categoria,
+        id_oferta: platillo.id_oferta,
+      },
+    });
+  };
+
+  const DeletePlatillo = async (platillo: DishesDefault) => {
+    navigate("/category/delete", {
+      state: {
+        id: platillo.id,
+        nombre: platillo.nombre,
+        descripcion: platillo.descripcion,
+        imagen: platillo.imagen,
+        precio: platillo.precio,
+        id_categoria: platillo.id_categoria,
+        id_oferta: platillo.id_oferta,
+      },
+    });
+  };
 
   return (
-    <div className='dataCard'>
+    <div className="dataCard">
       {platilloList?.map((data, idx) => (
         <div className="app-container-category-data-card" key={idx}>
           <div className="app-container-category-data-card-img" key={idx}>
@@ -112,16 +133,16 @@ export const PlatilloCard: React.FC<{}> = () => {
           <div className="app-container-category-data-card-buttons">
             <ButtonModificar
               placeholder="Editar"
-              handleClick={() => alert("Se edita")}
+              handleClick={() => editPlatillo(data)}
             />
-            <ButtonDetalle 
+            <ButtonDetalle
               placeholder="Detalle"
               handleClick={() => alert("detalle")}
             />
 
             <ButtonEliminar
               placeholder="Eliminar"
-              handleClick={() => alert("hola")}
+              handleClick={() => DeletePlatillo(data)}
             />
           </div>
         </div>

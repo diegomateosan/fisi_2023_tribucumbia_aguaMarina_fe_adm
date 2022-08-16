@@ -7,3 +7,7 @@ export interface DishesDefault {
   id_categoria: number;
   id_oferta: number;
 }
+
+export interface DishesState {
+  state: DishesDefault;
+}

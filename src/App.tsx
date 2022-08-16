@@ -20,7 +20,11 @@ import {
   EditCategory,
   DeleteCategory,
 } from "./pages/Home/home";
-import { CreatePlatillo, Platillo } from "./pages/platillo/platillo";
+import {
+  CreatePlatillo,
+  EditPlatillo,
+  Platillo,
+} from "./pages/platillo/platillo";
 import { CreateUser, User } from "./pages/User/user";
 
 function App() {
@@ -85,6 +89,13 @@ function App() {
               path="/platillo/create"
               element={
                 <CreatePlatillo handleauth={() => setadminLoggedIn(false)} />
+              }
+            />
+
+            <Route
+              path="platillo/edit"
+              element={
+                <EditPlatillo handleauth={() => setadminLoggedIn(false)} />
               }
             />
 

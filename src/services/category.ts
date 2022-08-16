@@ -85,6 +85,21 @@ const categoryService = {
       return null;
     }
   },
+
+  getName: async (id: number) => {
+    try {
+      const { data } = await axios({
+        url: `${BASE_URL}/category/getname`,
+        method: "post",
+        data: {
+          id: id,
+        },
+      });
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
 };
 
 export default categoryService;

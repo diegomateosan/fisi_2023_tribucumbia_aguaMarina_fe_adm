@@ -7,7 +7,7 @@ import "./input.css";
 
 export const InputDefault: React.FC<{
   estado: boolean;
-  campo: string;
+  campo: any;
   cambiarEstado: (text: boolean) => void;
   cambiarCampo: (text: string) => void;
   tipo: string;

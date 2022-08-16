@@ -1,4 +1,3 @@
-
 //Libs
 import React, { useEffect, useState } from "react";
 import { storage } from "../../FireBase/firebase";
@@ -34,7 +33,7 @@ export const PLatilloListaLlamada: React.FC<{}> = () => {
   const navigate = useNavigate();
   const countCategories = async () => {
     // cambiar aqui por dishes servidces
-    const result = await categoryService.count(); 
+    const result = await categoryService.count();
     setExistsEntrys(result);
     console.log("Categories exists state: " + result);
   };
@@ -57,16 +56,13 @@ export const PLatilloListaLlamada: React.FC<{}> = () => {
           altTittle="Not item Logo"
           onSubmit={handleClick}
         />
-        
       );
     } else {
-      return(<PlatilloCard/>) 
+      return <PlatilloCard />;
     }
   };
 
   return (
-
-    
     <div className="app-container-categories">
       <div className="app-container-content">{shownCategories()}</div>
     </div>
@@ -82,34 +78,31 @@ export const CreatePlatilloContent: React.FC<{
   descriptionState: boolean;
   setDescriptionState: (txt: boolean) => void;
   setDescription: (txt: string) => void;
-  precio : string;
+  precio: string;
   precioState: boolean;
-  setprecio : (txt:string) => void;
-  setprecioState : (txt: boolean) => void;
-  id_categoria : string;
-  id_categoriaState : boolean;
-  setid_categoria : (txt: string) => void;
-  setid_categoriaState : (txt: boolean) => void;
-
+  setprecio: (txt: string) => void;
+  setprecioState: (txt: boolean) => void;
+  id_categoria: string;
+  id_categoriaState: boolean;
+  setid_categoria: (txt: string) => void;
+  setid_categoriaState: (txt: boolean) => void;
 }> = ({
-    name,
-    nameState,
-    setNameState,
-    setName,
-    description,
-    descriptionState,
-    setDescriptionState,
-    setDescription,
-    precio,
-    precioState,
-    setprecio,
-    setprecioState,
-    id_categoria,
-    id_categoriaState,
-    setid_categoria,
-    setid_categoriaState,
-  
-  
+  name,
+  nameState,
+  setNameState,
+  setName,
+  description,
+  descriptionState,
+  setDescriptionState,
+  setDescription,
+  precio,
+  precioState,
+  setprecio,
+  setprecioState,
+  id_categoria,
+  id_categoriaState,
+  setid_categoria,
+  setid_categoriaState,
 }) => {
   const [imageUpload, setImageUpload] = useState<File | null>(null);
   const [imageUrl, setimageUrl] = useState("");
@@ -117,8 +110,8 @@ export const CreatePlatilloContent: React.FC<{
   const [buttonState, setbuttonState] = useState(false);
   const navigate = useNavigate();
   const [categoryList, setCategoryList] = useState<CategoryData[] | null>([]);
-  const [nombrecategory, setnombrecategory] = useState("")
-  
+  const [nombrecategory, setnombrecategory] = useState("");
+
   const mostrarImagen = () => {
     if (urlState === true) {
       return (
@@ -130,58 +123,47 @@ export const CreatePlatilloContent: React.FC<{
     }
   };
 
-  const llamarCategorias = async () =>{
+  const llamarCategorias = async () => {
     const result = await categoryService.list();
     setCategoryList(result);
-    
-  }
+  };
 
-  const categoriaID = async (name : string)=>{
-    const result = await categoryService.showID(name);  
-    setid_categoria(result.data.id)
-  }
+  const categoriaID = async (name: string) => {
+    const result = await categoryService.showID(name);
+    setid_categoria(result.data.id);
+  };
 
-const evento = (event: React.ChangeEvent<HTMLSelectElement>) =>{
+  const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setnombrecategory(event.target.value);
+  };
 
-     setnombrecategory(event.target.value);
-}
+  const mapearCategorias = () => {
+    if (categoryList !== null) {
+      return (
+        <select
+          name="Categoria "
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => evento(e)}
+        >
+          <option selected disabled>
+            Choose one
+          </option>
 
-  const mapearCategorias =  () =>{
-    if(categoryList!==null){
-
-        return (  
-            
-            <select name="Categoria " onChange={(e : React.ChangeEvent<HTMLSelectElement>)=>evento(e)}>
-                   
-                   <option selected disabled>
-                    Choose one
-                   </option>
-                
-                {
-                
-                categoryList?.map( (data,idx)=>
-                <option key={idx}>{data.name} </option>
-                
-                )
-
-            }
-  
-            </select>
-          
-        )
-    
-    }else{
-        
-        return ( <select name="Categoria ">
-        <option>No hay categorias </option>
-       
-      </select>)
+          {categoryList?.map((data, idx) => (
+            <option key={idx}>{data.name} </option>
+          ))}
+        </select>
+      );
+    } else {
+      return (
+        <select name="Categoria ">
+          <option>No hay categorias </option>
+        </select>
+      );
     }
-
-  }
+  };
 
   useEffect(() => {
-        llamarCategorias();
+    llamarCategorias();
     if (imageUpload !== undefined && imageUpload !== null) {
       setbuttonState(true);
       console.log(buttonState);
@@ -222,26 +204,34 @@ const evento = (event: React.ChangeEvent<HTMLSelectElement>) =>{
     }
   };
 
-  const CreatePlatillo= async () => {
-    if(id_categoriaState===false){
+  const CreatePlatillo = async () => {
+    if (id_categoriaState === false) {
       categoriaID(nombrecategory);
-      setid_categoriaState(true);    
-    }else{
-      if (nameState === true && descriptionState === true && urlState === true && precioState===true && id_categoriaState===true ) {
-        // mandar los datos del platillo  ojo no olvides los tipos 
-      
-      const result = await dishesService.create(name,description,imageUrl,Number(precio),Number(id_categoria))
-      console.log(result);
-      alert("Registro exitoso");
-      navigate("/platillo");
+      setid_categoriaState(true);
     } else {
-      alert("campos vacios");
-    }
+      if (
+        nameState === true &&
+        descriptionState === true &&
+        urlState === true &&
+        precioState === true &&
+        id_categoriaState === true
+      ) {
+        // mandar los datos del platillo  ojo no olvides los tipos
 
+        const result = await dishesService.create(
+          name,
+          description,
+          imageUrl,
+          Number(precio),
+          Number(id_categoria)
+        );
+        console.log(result);
+        alert("Registro exitoso");
+        navigate("/platillo");
+      } else {
+        alert("campos vacios");
+      }
     }
-    
-    
-    
   };
 
   return (
@@ -284,12 +274,9 @@ const evento = (event: React.ChangeEvent<HTMLSelectElement>) =>{
         />
 
         <div className="app-container-platillo-create-category">
-            <label>Categorias</label>
-            {mapearCategorias()}
-          </div>
-        
-
-
+          <label>Categorias</label>
+          {mapearCategorias()}
+        </div>
 
         <div className="app-container-platillo-create-file">
           <label>Imagen</label>
@@ -308,6 +295,3 @@ const evento = (event: React.ChangeEvent<HTMLSelectElement>) =>{
     </div>
   );
 };
-
-
-
