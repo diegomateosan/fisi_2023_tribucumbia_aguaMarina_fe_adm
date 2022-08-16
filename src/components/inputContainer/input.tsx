@@ -183,8 +183,6 @@ export const InputPassword: React.FC<{
   );
 };
 
-
-
 export const InputNumber: React.FC<{
   estado: boolean;
   campo: string;
@@ -258,6 +256,25 @@ export const InputNumber: React.FC<{
           <div className="app-container-icon">{MostrarIcono()}</div>
         </div>
         <div className="app-container-showError">{MostrarError()}</div>
+      </div>
+    </div>
+  );
+};
+
+export const StaticInput: React.FC<{
+  placeholder: string;
+  type: string;
+  value: any;
+}> = ({ placeholder, type, value }) => {
+  return (
+    <div className="app-container-input">
+      <div className="app-container-input-icon">
+        <div className="app-container-input-label">
+          <label>{placeholder}</label>
+        </div>
+        <div className="app-container-inputAndIcon">
+          <input type={type} value={value} disabled />
+        </div>
       </div>
     </div>
   );

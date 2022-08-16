@@ -7,7 +7,10 @@ import "./home.css";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import { CategoryData, CategoryState } from "../../entities/category";
 import { stat } from "fs";
-import { InputDefault } from "../../components/inputContainer/input";
+import {
+  InputDefault,
+  StaticInput,
+} from "../../components/inputContainer/input";
 import { storage } from "../../FireBase/firebase";
 import {
   ref,
@@ -228,6 +231,56 @@ export const EditCategory: React.FC<{
 
             <div className="app-container-category-create-image">
               {mostrarImagen()}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const DeleteCategory: React.FC<{
+  handleauth: () => void;
+}> = ({ handleauth }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { state } = location as CategoryState;
+
+  const [id, setId] = useState(state.id);
+  const [name, setName] = useState(state.name);
+  const [description, setDescriptionState] = useState(state.description);
+  const [imageUrl, setimageUrl] = useState(state.image_url);
+
+  const BorrarCategoria = async () => {
+    const result = await categoryService.delete(id);
+    console.log(result);
+  };
+
+  return (
+    <div className="app-container-edit-category">
+      <div className="app-container-navBar">
+        <NavBar handleauth={handleauth} />
+      </div>
+
+      <div className="app-container-category-content">
+        <div className="app-container-category-content-header">
+          <HeaderBack
+            placeholder="Editar categorías"
+            handleClick={() => navigate("/category")}
+          />
+          <div className="app-container-category-edit-form">
+            <div className="app-container-category-edit-form-input">
+              <StaticInput type="text" value={id} placeholder="id" />
+              <StaticInput type="text" value={name} placeholder="Nombre" />
+              <StaticInput
+                type="text"
+                value={description}
+                placeholder="Descripción"
+              />
+              <Button
+                placeholder="Borrar categoría"
+                handleClick={BorrarCategoria}
+              />
             </div>
           </div>
         </div>

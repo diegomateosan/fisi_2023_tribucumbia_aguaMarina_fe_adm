@@ -37,6 +37,17 @@ export const CategoryCard: React.FC<{}> = () => {
     });
   };
 
+  const DeleteCategory = async (category: CategoryData) => {
+    navigate("/category/delete", {
+      state: {
+        id: category.id,
+        name: category.name,
+        description: category.description,
+        image_url: category.image_url,
+      },
+    });
+  };
+
   return (
     <div className="dataCard">
       {categoryList?.map((data, idx) => (
@@ -57,7 +68,7 @@ export const CategoryCard: React.FC<{}> = () => {
             />
             <ButtonEliminar
               placeholder="Eliminar"
-              handleClick={() => alert("hola")}
+              handleClick={() => DeleteCategory(data)}
             />
           </div>
         </div>
