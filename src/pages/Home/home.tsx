@@ -118,7 +118,9 @@ export const EditCategory: React.FC<{
     if (urlState === true) {
       return (
         <div className="app-container-create-image-uploaded">
-          <label>Previsualización de la Imagen </label>
+          <label>
+            <h1>Previsualización de la Imagen </h1>
+          </label>
           <img src={imageUrl} alt="image just uploaded" />
         </div>
       );
@@ -185,50 +187,65 @@ export const EditCategory: React.FC<{
             placeholder="Editar categorías"
             handleClick={() => navigate("/category")}
           />
-          <div className="app-container-category-edit-form">
+        </div>
+        <div className="app-container-category-edit-form">
+          <div className="app-container-category-todo">
             <div className="app-container-category-edit-form-input">
-              <InputDefault
-                estado={nameState}
-                campo={name}
-                cambiarEstado={(txt: boolean) => setNameState(txt)}
-                cambiarCampo={(txt: string) => setName(txt)}
-                tipo="text"
-                label="Nombre"
-                placeholder="Ejemplo: Entradas"
-                leyendaError="La categoría debe contener como mínimo 6 caracteres"
-                expresionRegular={/^.{6,25}$/}
-              />
-
-              <InputDefault
-                estado={descriptionState}
-                campo={description}
-                cambiarEstado={(txt: boolean) => setDescriptionState(txt)}
-                cambiarCampo={(txt: string) => setDescription(txt)}
-                tipo="text"
-                label="Descripción"
-                placeholder="Ejemplo: zzz"
-                leyendaError="La categoría debe contener como mínimo 6 caracteres"
-                expresionRegular={/^.{6,25}$/}
-              />
-
-              <div className="app-container-category-edit-file">
-                <label>Imagen</label>
-                <input
-                  type="file"
-                  onChange={(event) => handleOnChange(event)}
-                />
-                <button onClick={uploadImage}>Upload Image</button>
-                {buttonState ? (
-                  <Button
-                    placeholder="Editar Categoría"
-                    handleClick={EditCategory}
+              <div className="form-input-container">
+                <div className="label">
+                  <h1>Detalles de la categoria</h1>
+                </div>
+                <div className="inputs">
+                  <InputDefault
+                    estado={nameState}
+                    campo={name}
+                    cambiarEstado={(txt: boolean) => setNameState(txt)}
+                    cambiarCampo={(txt: string) => setName(txt)}
+                    tipo="text"
+                    label="Nombre"
+                    placeholder="Ejemplo: Entradas"
+                    leyendaError="La categoría debe contener como mínimo 6 caracteres"
+                    expresionRegular={/^.{6,25}$/}
                   />
-                ) : (
-                  <div></div>
-                )}
+
+                  <InputDefault
+                    estado={descriptionState}
+                    campo={description}
+                    cambiarEstado={(txt: boolean) => setDescriptionState(txt)}
+                    cambiarCampo={(txt: string) => setDescription(txt)}
+                    tipo="text"
+                    label="Descripción"
+                    placeholder="Ejemplo: zzz"
+                    leyendaError="La categoría debe contener como mínimo 6 caracteres"
+                    expresionRegular={/^.{6,25}$/}
+                  />
+                </div>
+
+                <div className="app-container-category-edit-file">
+                  <div className="edit-file">
+                    <label>Imagen</label>
+
+                    <input
+                      type="file"
+                      onChange={(event) => handleOnChange(event)}
+                    />
+                    <button onClick={uploadImage}>Upload Image</button>
+                  </div>
+
+                  <div className="button-edit">
+                    {buttonState ? (
+                      <Button
+                        placeholder="Editar Categoría"
+                        handleClick={EditCategory}
+                      />
+                    ) : (
+                      <div></div>
+                    )}
+                  </div>
+                  
+                </div>
               </div>
             </div>
-
             <div className="app-container-category-create-image">
               {mostrarImagen()}
             </div>
@@ -278,18 +295,20 @@ export const DeleteCategory: React.FC<{
             handleClick={() => navigate("/category")}
           />
           <div className="app-container-category-edit-form">
-            <div className="app-container-category-edit-form-input">
-              <StaticInput type="text" value={id} placeholder="id" />
-              <StaticInput type="text" value={name} placeholder="Nombre" />
-              <StaticInput
-                type="text"
-                value={description}
-                placeholder="Descripción"
-              />
-              <Button
-                placeholder="Borrar categoría"
-                handleClick={BorrarCategoria}
-              />
+            <div className="app-container-category-todo">
+              <div className="app-container-category-edit-form-input">
+                <StaticInput type="text" value={id} placeholder="id" />
+                <StaticInput type="text" value={name} placeholder="Nombre" />
+                <StaticInput
+                  type="text"
+                  value={description}
+                  placeholder="Descripción"
+                />
+                <Button
+                  placeholder="Borrar categoría"
+                  handleClick={BorrarCategoria}
+                />
+              </div>
             </div>
           </div>
           <div className="app-container-category-create-image">

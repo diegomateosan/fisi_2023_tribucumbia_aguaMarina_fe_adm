@@ -3,6 +3,13 @@
   flex-direction: row;
   border-bottom: 1px solid;
   align-items: center;
+  width: 100%;
+  padding: 0 20px 0 20px;
+  margin: auto;
+  gap: 20px;
+}
+.app-container-header-icon {
+  cursor: pointer;
 }
 
 .app-container-headerButton{
@@ -10,34 +17,43 @@
   border-bottom: 1px solid;
   height: 72.55px;
 }
-
 .app-container-header-default-title-button{
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  width: 97%;
+  margin: auto;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-container-header-default-title {
+  width: 50%;
+  height: 100%;
+}
+.app-container-header-default-button{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.app-container-header-default-title-button> div{
-  width: 50%;
-  }
-
-  .app-container-header-default-title > h2{
+  /* .app-container-header-default-title > h2:hover {
     margin-left: 60px;
-  }
+  } */
 
  
-  .app-container-header-default-button{
+  /* .app-container-header-default-button{
     margin-bottom: 30px; 
     margin-left: 650px;
-  }
+  } */
 
-  .app-container-header-default-button > div  {
+  /* .app-container-header-default-button > div  {
     justify-content: none;
     align-items: none;
     margin-top: 15px;
     margin-bottom: 0;
 
-  }
-  .app-container-headerback > div {
+  } */
+  /* .app-container-headerback > div {
     margin-left: 10px;
-  }
+  } */

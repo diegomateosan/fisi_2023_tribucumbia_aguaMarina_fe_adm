@@ -26,6 +26,7 @@
   flex-direction: row;
   align-items: center;
   align-content: center;
+
 }
 
 .app-container-inputAndIcon > input {
@@ -42,6 +43,7 @@
   transition: all 0.15s ease;
   border-bottom: 1px solid;
   margin-right: 30px;
+  outline: none;
 }
 
 .app-container-icon {

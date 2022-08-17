@@ -29,6 +29,7 @@ import { Button } from "../../components/button/button";
 import categoryService from "../../services/category";
 import { CategoryData } from "../../entities/category";
 import dishesService from "../../services/dishes";
+import "./platillo.css"
 
 export const Platillo: React.FC<{
   handleauth: () => void;
@@ -153,7 +154,7 @@ export const EditPlatillo: React.FC<{
     }
     categoriaID(categoria);
     console.log(imageUpload);
-  }, [imageUpload,categoria]);
+  }, [imageUpload, categoria]);
 
   useEffect(() => {
     llamarCategorias();
@@ -166,14 +167,13 @@ export const EditPlatillo: React.FC<{
   };
 
   const categoriaID = async (name: string) => {
-    if(categoria!==""){
+    if (categoria !== "") {
       const result = await categoryService.showID(name);
-     console.log(result.data.id); 
-    setid_categoria(result.data.id);
-      setid_categoriaState(true)
- 
+      console.log(result.data.id);
+      setid_categoria(result.data.id);
+      setid_categoriaState(true);
     }
-     };
+  };
 
   const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCategoria(event.target.value);
@@ -186,6 +186,7 @@ export const EditPlatillo: React.FC<{
           name="Categoria "
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => evento(e)}
           value={categoria}
+          className="categoria"
         >
           <option selected disabled>
             Choose one
@@ -198,7 +199,7 @@ export const EditPlatillo: React.FC<{
       );
     } else {
       return (
-        <select name="Categoria ">
+        <select name="Categoria " className="categoria">
           <option>No hay categorias </option>
         </select>
       );
@@ -232,7 +233,7 @@ export const EditPlatillo: React.FC<{
     if (urlState === true) {
       return (
         <div className="app-container-create-image-uploaded">
-          <label>Previsualización de la Imagen </label>
+          <label><h1>Previsualización de la Imagen</h1> </label>
           <img src={imageUrl} alt="image just uploaded" />
         </div>
       );
@@ -240,27 +241,25 @@ export const EditPlatillo: React.FC<{
   };
 
   const EditarPlatillo = async () => {
-
-      if (
-        nameState === true &&
-        descriptionState === true &&
-        urlState === true &&
-        precioState === true &&
-        id_categoriaState === true
-      ) {
-        const result = await dishesService.edit(
-          name,
-          description,
-          imageUrl,
-          Number(precio),
-          Number(id_categoria),
-          Number(id)
-        );
-        console.log(result);
-        navigate("/platillo")
-        alert("Platillo editado");
-      }
-
+    if (
+      nameState === true &&
+      descriptionState === true &&
+      urlState === true &&
+      precioState === true &&
+      id_categoriaState === true
+    ) {
+      const result = await dishesService.edit(
+        name,
+        description,
+        imageUrl,
+        Number(precio),
+        Number(id_categoria),
+        Number(id)
+      );
+      console.log(result);
+      navigate("/platillo");
+      alert("Platillo editado");
+    }
   };
 
   return (
@@ -276,66 +275,78 @@ export const EditPlatillo: React.FC<{
             handleClick={() => navigate("/platillo")}
           />
           <div className="app-container-category-edit-form">
-            <div className="app-container-category-edit-form-input">
-              <InputDefault
-                estado={nameState}
-                campo={name}
-                cambiarEstado={(txt: boolean) => setNameState(txt)}
-                cambiarCampo={(txt: string) => setName(txt)}
-                tipo="text"
-                label="Nombre"
-                placeholder="Ejemplo: Entradas"
-                leyendaError="La categoría debe contener como mínimo 6 caracteres"
-                expresionRegular={/^.{6,25}$/}
-              />
+            <div className="app-container-category-todo">
+              <div className="app-container-category-edit-form-input">
+                <div className="form-input-container">
+                  <div className="label">
+                    <h1>Detalles del platillo</h1>
+                  </div>
+                  <div className="inputs">
+                    <InputDefault
+                      estado={nameState}
+                      campo={name}
+                      cambiarEstado={(txt: boolean) => setNameState(txt)}
+                      cambiarCampo={(txt: string) => setName(txt)}
+                      tipo="text"
+                      label="Nombre"
+                      placeholder="Ejemplo: Entradas"
+                      leyendaError="La categoría debe contener como mínimo 6 caracteres"
+                      expresionRegular={/^.{6,25}$/}
+                    />
 
-              <InputDefault
-                estado={descriptionState}
-                campo={description}
-                cambiarEstado={(txt: boolean) => setDescriptionState(txt)}
-                cambiarCampo={(txt: string) => setDescription(txt)}
-                tipo="text"
-                label="Descripción"
-                placeholder="Ejemplo: zzz"
-                leyendaError="La categoría debe contener como mínimo 6 caracteres"
-                expresionRegular={/^.{6,25}$/}
-              />
+                    <InputDefault
+                      estado={descriptionState}
+                      campo={description}
+                      cambiarEstado={(txt: boolean) => setDescriptionState(txt)}
+                      cambiarCampo={(txt: string) => setDescription(txt)}
+                      tipo="text"
+                      label="Descripción"
+                      placeholder="Ejemplo: zzz"
+                      leyendaError="La categoría debe contener como mínimo 6 caracteres"
+                      expresionRegular={/^.{6,25}$/}
+                    />
 
-              <InputDefault
-                estado={precioState}
-                campo={precio}
-                cambiarEstado={(txt: boolean) => setprecioState(txt)}
-                cambiarCampo={(txt: any) => setprecio(txt)}
-                tipo="number"
-                label="Precío"
-                placeholder="Ejemplo: 20.00 "
-                leyendaError="La categoría debe contener como mínimo 6 caracteres"
-                expresionRegular={/[0-9]+[.]([1-9][0-9]|[0][0])$/}
-              />
+                    <InputDefault
+                      estado={precioState}
+                      campo={precio}
+                      cambiarEstado={(txt: boolean) => setprecioState(txt)}
+                      cambiarCampo={(txt: any) => setprecio(txt)}
+                      tipo="number"
+                      label="Precío"
+                      placeholder="Ejemplo: 20.00 "
+                      leyendaError="La categoría debe contener como mínimo 6 caracteres"
+                      expresionRegular={/[0-9]+[.]([1-9][0-9]|[0][0])$/}
+                    />
+                    {mapearCategorias()}
+                  </div>
+                  <div className="app-container-category-edit-file">
+                    <div className="edit-file">
+                      <label>Imagen</label>
+                      <input
+                        type="file"
+                        onChange={(event) => handleOnChange(event)}
+                      />
+                      <button onClick={uploadImage}>Upload Image</button>
+                    </div>
 
-              {mapearCategorias()}
+                    <div className="button-edit">
+                      {buttonState ? (
+                        <Button
+                          placeholder="Editar Categoría"
+                          handleClick={EditarPlatillo}
+                        />
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
 
-              <div className="app-container-category-edit-file">
-                <label>Imagen</label>
-                <input
-                  type="file"
-                  onChange={(event) => handleOnChange(event)}
-                />
-                <button onClick={uploadImage}>Upload Image</button>
-
-                {buttonState ? (
-                  <Button
-                    placeholder="Editar Categoría"
-                    handleClick={EditarPlatillo}
-                  />
-                ) : (
-                  <div></div>
-                )}
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <div className="app-container-category-create-image">
-              {mostrarImagen()}
+              <div className="app-container-category-create-image">
+                {mostrarImagen()}
+              </div>
             </div>
           </div>
         </div>

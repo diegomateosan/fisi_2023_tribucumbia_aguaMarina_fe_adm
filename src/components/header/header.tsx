@@ -52,7 +52,7 @@ export const HeaderButton: React.FC<{
       <div className="app-container-headerButton">
         <div className="app-container-header-default-title-button">
           <div className="app-container-header-default-title">
-          <h2>{placeholder}</h2>
+            <h2>{placeholder}</h2>
           </div>
           
           <div className="app-container-header-default-button">
