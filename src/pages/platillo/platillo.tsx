@@ -113,7 +113,6 @@ export const EditPlatillo: React.FC<{
 
   const location = useLocation();
   const { state } = location as DishesState;
-
   const [name, setName] = useState(state.nombre);
   const [nameState, setNameState] = useState(true);
   const [description, setDescription] = useState(state.descripcion);
@@ -152,8 +151,9 @@ export const EditPlatillo: React.FC<{
       console.log(buttonState);
       setUrlState(false);
     }
+    categoriaID(categoria);
     console.log(imageUpload);
-  }, [imageUpload]);
+  }, [imageUpload,categoria]);
 
   useEffect(() => {
     llamarCategorias();
@@ -161,14 +161,19 @@ export const EditPlatillo: React.FC<{
   }, []);
 
   const obtenerNombre = async () => {
-    const responseResult = await categoryService.getName(state.id);
+    const responseResult = await categoryService.getName(id_categoria);
     setCategoria(responseResult.data.name);
   };
 
   const categoriaID = async (name: string) => {
-    const result = await categoryService.showID(name);
+    if(categoria!==""){
+      const result = await categoryService.showID(name);
+     console.log(result.data.id); 
     setid_categoria(result.data.id);
-  };
+      setid_categoriaState(true)
+ 
+    }
+     };
 
   const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCategoria(event.target.value);
@@ -235,10 +240,7 @@ export const EditPlatillo: React.FC<{
   };
 
   const EditarPlatillo = async () => {
-    if (id_categoriaState === false) {
-      categoriaID(categoria);
-      setid_categoriaState(true);
-    } else {
+
       if (
         nameState === true &&
         descriptionState === true &&
@@ -255,9 +257,10 @@ export const EditPlatillo: React.FC<{
           Number(id)
         );
         console.log(result);
+        navigate("/platillo")
         alert("Platillo editado");
       }
-    }
+
   };
 
   return (
