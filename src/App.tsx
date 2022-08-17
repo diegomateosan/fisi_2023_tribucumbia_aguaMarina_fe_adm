@@ -24,6 +24,7 @@ import {
   BorrarPlatillo,
   CreatePlatillo,
   EditPlatillo,
+  MostrarPlatillo,
   Platillo,
 } from "./pages/platillo/platillo";
 import { BorrarUser, CreateUser, User } from "./pages/User/user";
@@ -106,6 +107,14 @@ function App() {
                 <BorrarPlatillo handleauth={() => setadminLoggedIn(false)} />
               }
             />
+
+            <Route
+              path="platillo/show"
+              element={
+                <MostrarPlatillo handleauth={() => setadminLoggedIn(false)} />
+              }
+            />
+
 
             <Route
               path="/user"

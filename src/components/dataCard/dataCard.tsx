@@ -11,6 +11,7 @@ import "./dataCard.css";
 import { useNavigate } from "react-router-dom";
 import { DishesDefault } from "../../entities/dishes";
 import dishesService from "../../services/dishes";
+import { MostrarPlatillo } from "../../pages/platillo/platillo";
 
 export const CategoryCard: React.FC<{}> = () => {
   const [categoryList, setCategoryList] = useState<CategoryData[] | null>([]);
@@ -108,6 +109,22 @@ export const PlatilloCard: React.FC<{}> = () => {
     });
   };
 
+  const mostrarPlatillo = async (platillo: DishesDefault) => {
+    navigate("/platillo/show", {
+      state: {
+        id: platillo.id,
+        nombre: platillo.nombre,
+        descripcion: platillo.descripcion,
+        imagen: platillo.imagen,
+        precio: platillo.precio,
+        id_categoria: platillo.id_categoria,
+        id_oferta: platillo.id_oferta,
+      },
+    });
+  };
+
+
+
   const DeletePlatillo = async (platillo: DishesDefault) => {
     navigate("/platillo/delete", {
       state: {
@@ -147,7 +164,7 @@ export const PlatilloCard: React.FC<{}> = () => {
             />
             <ButtonDetalle
               placeholder="Detalle"
-              handleClick={() => alert("detalle")}
+              handleClick={() => mostrarPlatillo(data)}
             />
 
             <ButtonEliminar

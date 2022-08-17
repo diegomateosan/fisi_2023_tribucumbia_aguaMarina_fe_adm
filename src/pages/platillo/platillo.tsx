@@ -344,6 +344,210 @@ export const EditPlatillo: React.FC<{
   );
 };
 
+
+export const MostrarPlatillo: React.FC<{
+  handleauth: () => void;
+}> = ({ handleauth }) => {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const { state } = location as DishesState;
+  const [name, setName] = useState(state.nombre);
+  const [nameState, setNameState] = useState(true);
+  const [description, setDescription] = useState(state.descripcion);
+  const [descriptionState, setDescriptionState] = useState(true);
+  const [precio, setprecio] = useState(state.precio);
+  const [precioState, setprecioState] = useState(true);
+  const [id_categoria, setid_categoria] = useState(state.id_categoria);
+  const [id_categoriaState, setid_categoriaState] = useState(true);
+  const [categoria, setCategoria] = useState<string>("");
+  const [id, setId] = useState(state.id);
+  const [categoryList, setCategoryList] = useState<CategoryData[] | null>([]);
+
+  const [imageUrl, setimageUrl] = useState(state.imagen);
+  const [urlState, setUrlState] = useState(true);
+
+  const [imageUpload, setImageUpload] = useState<File | null>(null);
+  const [buttonState, setbuttonState] = useState(true);
+
+  const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement;
+    const file: File = (target.files as FileList)[0];
+    setImageUpload(file);
+  };
+
+  const llamarCategorias = async () => {
+    const result = await categoryService.list();
+    setCategoryList(result);
+  };
+
+  useEffect(() => {
+    if (imageUpload !== undefined) {
+      setbuttonState(true);
+      console.log(buttonState);
+    } else {
+      setbuttonState(false);
+      console.log(buttonState);
+      setUrlState(false);
+    }
+    categoriaID(categoria);
+    console.log(imageUpload);
+  }, [imageUpload,categoria]);
+
+  useEffect(() => {
+    llamarCategorias();
+    obtenerNombre();
+  }, []);
+
+  const obtenerNombre = async () => {
+    const responseResult = await categoryService.getName(id_categoria);
+    setCategoria(responseResult.data.name);
+  };
+
+  const categoriaID = async (name: string) => {
+    if(categoria!==""){
+      const result = await categoryService.showID(name);
+     console.log(result.data.id); 
+    setid_categoria(result.data.id);
+      setid_categoriaState(true)
+ 
+    }
+     };
+
+  const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategoria(event.target.value);
+  };
+
+  const mapearCategorias = () => {
+    if (categoryList !== null) {
+      return (
+        <select
+          name="Categoria "
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => evento(e)}
+          value={categoria}
+        >
+          <option selected disabled>
+            Choose one
+          </option>
+
+          {categoryList?.map((data, idx) => (
+            <option key={idx}>{data.name} </option>
+          ))}
+        </select>
+      );
+    } else {
+      return (
+        <select name="Categoria ">
+          <option>No hay categorias </option>
+        </select>
+      );
+    }
+  };
+
+  const uploadImage = async () => {
+    if (imageUpload === null || imageUpload === undefined) {
+      alert("No se seleccionó ningún archivo");
+      return <div></div>;
+    } else {
+      const imageRef = await ref(
+        storage,
+        `platillo/${imageUpload.name + v4()}`
+      );
+      await uploadBytes(imageRef, imageUpload).then(() => {
+        console.log("llego");
+      });
+
+      getDownloadURL(ref(storage, `platillo/${imageRef.name}`)).then((url) => {
+        console.log(url);
+        setimageUrl(url);
+        setUrlState(true);
+      });
+
+      setUrlState(true);
+    }
+  };
+
+  const mostrarImagen = () => {
+    if (urlState === true) {
+      return (
+        <div className="app-container-create-image-uploaded">
+          <label>Previsualización de la Imagen </label>
+          <img src={imageUrl} alt="image just uploaded" />
+        </div>
+      );
+    }
+  };
+
+  const EditarPlatillo = async () => {
+
+      if (
+        nameState === true &&
+        descriptionState === true &&
+        urlState === true &&
+        precioState === true &&
+        id_categoriaState === true
+      ) {
+        const result = await dishesService.edit(
+          name,
+          description,
+          imageUrl,
+          Number(precio),
+          Number(id_categoria),
+          Number(id)
+        );
+        console.log(result);
+        navigate("/platillo")
+        alert("Platillo editado");
+      }
+
+  };
+
+  return (
+    <div className="app-container-edit-category">
+      <div className="app-container-navBar">
+        <NavBar handleauth={handleauth} />
+      </div>
+
+      <div className="app-container-category-content">
+        <div className="app-container-category-content-header">
+          <HeaderBack
+            placeholder="Detalle platillo"
+            handleClick={() => navigate("/platillo")}
+          />
+          <div className="app-container-category-edit-form">
+             <label>Id del platillo:</label>
+              <label> {id}</label>
+              <br></br>          
+              <label>Nombre:</label>
+              <label>{name}</label>
+              <br></br>
+              <label>Descripción:</label>
+              <label>{description}</label>
+              <br></br>
+              <label>Precio</label>
+              <label>{precio}</label>
+              <br></br>
+              <label>Id de categoria:</label>
+              <label>{id_categoria}</label>
+              <br></br>
+              <label>Nombre de categoria:</label>
+              <label>{categoria}</label>
+              <br></br>
+              
+
+            <div className="app-container-category-create-image">
+              {mostrarImagen()}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+
 export const BorrarPlatillo: React.FC<{
   handleauth: () => void;
 }> = ({ handleauth }) => {
@@ -417,4 +621,10 @@ export const BorrarPlatillo: React.FC<{
       </div>
     </div>
   );
+
+  
 };
+
+
+
+
