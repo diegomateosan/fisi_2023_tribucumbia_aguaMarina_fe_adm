@@ -49,33 +49,37 @@ export const CategoryCard: React.FC<{}> = () => {
   };
 
   return (
-    <div className="dataCard">
-      {categoryList?.map((data, idx) => (
-        <div className="app-container-category-data-card" key={idx}>
-          
-          <div className="app-container-category-data-card-img" key={idx}>
-            <img src={data.image_url} alt="zzz" />
-          </div>
+    <div>
+      <div className="title">
+        <h1>Lista de Categorias</h1>
+      </div>
+      <div className="dataCard">
+        {categoryList?.map((data, idx) => (
+          <div className="app-container-category-data-card" key={idx}>
+            <div className="app-container-category-data-card-img" key={idx}>
+              <img src={data.image_url} alt="zzz" />
+            </div>
 
-          <div className="app-container-category-data-card-name">
-            <li className="app-container-category-data-card-name-li">
-              <div className="left">Nombre:</div>
-              <div className="right">{data.name}</div>
-            </li>
+            <div className="app-container-category-data-card-name">
+              <li className="app-container-category-data-card-name-li">
+                <div className="left">Nombre:</div>
+                <div className="right">{data.name}</div>
+              </li>
+            </div>
+
+            <div className="app-container-category-data-card-buttons">
+              <ButtonModificar
+                placeholder="Editar"
+                handleClick={() => editCategory(data)}
+              />
+              <ButtonEliminar
+                placeholder="Eliminar"
+                handleClick={() => DeleteCategory(data)}
+              />
+            </div>
           </div>
-          
-          <div className="app-container-category-data-card-buttons">
-            <ButtonModificar
-              placeholder="Editar"
-              handleClick={() => editCategory(data)}
-            />
-            <ButtonEliminar
-              placeholder="Eliminar"
-              handleClick={() => DeleteCategory(data)}
-            />
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
@@ -123,40 +127,45 @@ export const PlatilloCard: React.FC<{}> = () => {
   };
 
   return (
-    <div className="dataCard">
-      {platilloList?.map((data, idx) => (
-        <div className="app-container-category-data-card" key={idx}>
-          <div className="app-container-category-data-card-img" key={idx}>
-            <img src={data.imagen} alt="Imagen no Encontrada" />
-          </div>
-          <div className="app-container-category-data-card-name">
-            <li className="app-container-category-data-card-name-li">
-              <div className="left">Nombre:</div>
-              <div className="right">{data.nombre}</div>
-            </li>
-            <li className="app-container-category-data-card-name-li">
-              <div className="left">Precio:</div>
-              <div className="right">{data.precio}</div>
-            </li>
-          </div>
+    <div>
+      <div className="title">
+        <h1>Lista de Platillos</h1>
+      </div>
+      <div className="dataCard">
+        {platilloList?.map((data, idx) => (
+          <div className="app-container-category-data-card" key={idx}>
+            <div className="app-container-category-data-card-img" key={idx}>
+              <img src={data.imagen} alt="Imagen no Encontrada" />
+            </div>
+            <div className="app-container-category-data-card-name">
+              <li className="app-container-category-data-card-name-li">
+                <div className="left">Nombre:</div>
+                <div className="right">{data.nombre}</div>
+              </li>
+              <li className="app-container-category-data-card-name-li">
+                <div className="left">Precio:</div>
+                <div className="right">{data.precio}</div>
+              </li>
+            </div>
 
-          <div className="app-container-category-data-card-buttons">
-            <ButtonModificar
-              placeholder="Editar"
-              handleClick={() => editPlatillo(data)}
-            />
-            <ButtonDetalle
-              placeholder="Detalle"
-              handleClick={() => alert("detalle")}
-            />
+            <div className="app-container-category-data-card-buttons">
+              <ButtonModificar
+                placeholder="Editar"
+                handleClick={() => editPlatillo(data)}
+              />
+              <ButtonDetalle
+                placeholder="Detalle"
+                handleClick={() => alert("detalle")}
+              />
 
-            <ButtonEliminar
-              placeholder="Eliminar"
-              handleClick={() => DeletePlatillo(data)}
-            />
+              <ButtonEliminar
+                placeholder="Eliminar"
+                handleClick={() => DeletePlatillo(data)}
+              />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
