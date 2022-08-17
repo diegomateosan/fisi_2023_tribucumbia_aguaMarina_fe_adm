@@ -1,0 +1,9 @@
+.app-container-home {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.app-container-category-content {
+  overflow: hidden;
+}

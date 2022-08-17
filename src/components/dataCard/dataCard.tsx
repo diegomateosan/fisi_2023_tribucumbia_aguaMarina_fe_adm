@@ -165,7 +165,7 @@ export const PlatilloCard: React.FC<{}> = () => {
               </li>
             </div>
 
-<<<<<<< HEAD
+
           <div className="app-container-category-data-card-buttons">
             <ButtonModificar
               placeholder="Editar"
@@ -175,17 +175,7 @@ export const PlatilloCard: React.FC<{}> = () => {
               placeholder="Detalle"
               handleClick={() => mostrarPlatillo(data)}
             />
-=======
-            <div className="app-container-category-data-card-buttons">
-              <ButtonModificar
-                placeholder="Editar"
-                handleClick={() => editPlatillo(data)}
-              />
-              <ButtonDetalle
-                placeholder="Detalle"
-                handleClick={() => alert("detalle")}
-              />
->>>>>>> f32545fa3f0cf9ca47e13ecc8ffb6b5a38ff20d3
+
 
               <ButtonEliminar
                 placeholder="Eliminar"

@@ -2,6 +2,20 @@
   justify-content: left;
   margin-left: 55px;
 }
+.app-container-input {
+  /* background-color: grey; */
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start;
+}
+.app-container-input-icon {
+  /* background-color: aqua; */
+  width: 100%;
+}
+.app-container-input-label {
+  width: 70%;
+  margin: auto;
+}
 
 .app-container-input-icon {
   margin-top: 20px;
@@ -10,6 +24,8 @@
 .app-container-input-label > label {
   font-weight: bold;
   font-size: 18px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .app-container-input-label {
@@ -26,7 +42,7 @@
   flex-direction: row;
   align-items: center;
   align-content: center;
-
+  
 }
 
 .app-container-inputAndIcon > input {

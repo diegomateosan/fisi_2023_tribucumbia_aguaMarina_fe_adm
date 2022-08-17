@@ -1,0 +1,73 @@
+.app-container-create {
+  /* width: 100vw; */
+  height: 100vh;
+  /* background-color: aquamarine; */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app-container-platillo-create {
+  height: 70%;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.app-container-platillo-create-form{
+  background-color: aquamarine;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 2rem;
+  padding: 0 2rem 0 2rem;
+  box-shadow: 0 2rem 3rem rgb(132 139 200 / 18%);
+}
+.form {
+  margin-bottom: 20px;
+  /* background-color: beige; */
+  border: 1px solid aquamarine;
+  border-radius: 15px
+}
+.name-apellido {
+
+}
+.create-part2 {
+  /* background-color: green; */
+}
+.part2-top{
+  /* background-color: red; */
+  display: flex;
+}
+.top-lef {
+  width: 50%;
+}
+.top-right {
+  width: 50%;
+
+}
+.part2-bot {
+
+  width: 32%;
+  margin: auto;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.app-container-gender{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  width: 72%;
+  margin-left: 55px;
+  /* margin: auto; */
+}
+.app-container-gender>label {
+  padding-right: 10px;
+}
