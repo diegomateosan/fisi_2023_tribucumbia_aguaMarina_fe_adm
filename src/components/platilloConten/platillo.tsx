@@ -82,9 +82,9 @@ export const CreatePlatilloContent: React.FC<{
   precioState: boolean;
   setprecio: (txt: string) => void;
   setprecioState: (txt: boolean) => void;
-  id_categoria: string;
+  id_categoria: number;
   id_categoriaState: boolean;
-  setid_categoria: (txt: string) => void;
+  setid_categoria: (txt: number) => void;
   setid_categoriaState: (txt: boolean) => void;
 }> = ({
   name,
@@ -129,9 +129,14 @@ export const CreatePlatilloContent: React.FC<{
   };
 
   const categoriaID = async (name: string) => {
-    const result = await categoryService.showID(name);
+    if(nombrecategory!==""){
+      const result = await categoryService.showID(name);
+     console.log(result.data.id); 
     setid_categoria(result.data.id);
-  };
+      setid_categoriaState(true)
+ 
+    }
+     };
 
   const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setnombrecategory(event.target.value);
@@ -164,6 +169,7 @@ export const CreatePlatilloContent: React.FC<{
 
   useEffect(() => {
     llamarCategorias();
+    categoriaID(nombrecategory);
     if (imageUpload !== undefined && imageUpload !== null) {
       setbuttonState(true);
       console.log(buttonState);
@@ -173,7 +179,7 @@ export const CreatePlatilloContent: React.FC<{
       setUrlState(false);
     }
     console.log(imageUpload);
-  }, [imageUpload]);
+  }, [imageUpload,nombrecategory]);
 
   const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
@@ -205,16 +211,13 @@ export const CreatePlatilloContent: React.FC<{
   };
 
   const CreatePlatillo = async () => {
-    if (id_categoriaState === false) {
-      categoriaID(nombrecategory);
-      setid_categoriaState(true);
-    } else {
+
       if (
         nameState === true &&
         descriptionState === true &&
         urlState === true &&
         precioState === true &&
-        id_categoriaState === true
+        id_categoriaState === true 
       ) {
         // mandar los datos del platillo  ojo no olvides los tipos
 
@@ -231,7 +234,7 @@ export const CreatePlatilloContent: React.FC<{
       } else {
         alert("campos vacios");
       }
-    }
+    
   };
 
   return (

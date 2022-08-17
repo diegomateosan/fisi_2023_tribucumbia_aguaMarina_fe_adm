@@ -66,7 +66,7 @@ export const CreatePlatillo: React.FC<{
   const [descriptionState, setDescriptionState] = useState(false);
   const [precio, setprecio] = useState("");
   const [precioState, setprecioState] = useState(false);
-  const [id_categoria, setid_categoria] = useState("");
+  const [id_categoria, setid_categoria] = useState(0);
   const [id_categoriaState, setid_categoriaState] = useState(false);
 
   return (
@@ -96,7 +96,7 @@ export const CreatePlatillo: React.FC<{
             precioState={precioState}
             setprecioState={(txt: boolean) => setprecioState(txt)}
             id_categoria={id_categoria}
-            setid_categoria={(txt: string) => setid_categoria(txt)}
+            setid_categoria={(txt: number) => setid_categoria(txt)}
             id_categoriaState={id_categoriaState}
             setid_categoriaState={(txt: boolean) => setid_categoriaState(txt)}
           />
