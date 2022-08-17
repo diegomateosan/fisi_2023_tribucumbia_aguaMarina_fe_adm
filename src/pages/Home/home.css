@@ -52,12 +52,12 @@
 }
 
 .app-container-category-todo {
-  background-color: red;
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   display: flex;
 }
 .app-container-category-edit-form-input {
+  /* background-color: red; */
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -70,32 +70,35 @@
 }
 .label > h1 {
   font-family: 'Indie Flower', cursive;
-  font-size: 35px;
+  font-size: 25px;
   color: black;
   font-weight: bold;
   text-transform: uppercase;
   border-bottom: 3px solid black;
 }
 .form-input-container {
+  /* background-color: yellow; */
   width: 90%;
   height: 90%;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 
 .inputs {
-  /* background-color: grey; */
-  width: 90%;
-  padding-bottom: 75px;
+  width: 80%;
+  height: auto;
   border: 1px solid aquamarine;
   border-radius: 15px;
+  /* background-color: grey; */
+  padding-bottom: 20px;
+  
 }
 .app-container-category-edit-file {
-  width: 90%;
-  height: 25%;
+  width: 80%;
+  height: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,16 +126,17 @@
   display: flex;
   align-items: center;
 }
+
 .app-container-create-image-uploaded > label {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 .app-container-create-image-uploaded>label>h1{
   text-align: center;
   font-family: 'Indie Flower', cursive;
-  font-size: 35px;
+  font-size: 25px;
   color: black;
   font-weight: bold;
   text-transform: uppercase;
