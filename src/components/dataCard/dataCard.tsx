@@ -52,15 +52,18 @@ export const CategoryCard: React.FC<{}> = () => {
     <div className="dataCard">
       {categoryList?.map((data, idx) => (
         <div className="app-container-category-data-card" key={idx}>
+          
           <div className="app-container-category-data-card-img" key={idx}>
             <img src={data.image_url} alt="zzz" />
           </div>
+
           <div className="app-container-category-data-card-name">
             <li className="app-container-category-data-card-name-li">
               <div className="left">Nombre:</div>
               <div className="right">{data.name}</div>
             </li>
           </div>
+          
           <div className="app-container-category-data-card-buttons">
             <ButtonModificar
               placeholder="Editar"

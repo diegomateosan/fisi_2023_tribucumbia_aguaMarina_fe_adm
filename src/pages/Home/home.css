@@ -24,11 +24,44 @@
 
 .app-container-category-content-category > div > div > div {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   justify-items: center;
   align-items: center; 
-  grid-row-gap: 10px;
+  /* grid-row-gap: 50px; */
   grid-column-gap: 50px;
+}
+
+@media screen and (max-width: 1900px ){
+  .app-container-category-content-category > div > div > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center; 
+  }
+}
+@media screen and (max-width: 1400px ){
+  .app-container-category-content-category > div > div > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center; 
+  }
+}
+@media screen and (max-width: 1000px ){
+  .app-container-category-content-category > div > div > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center; 
+  }
+}
+@media screen and (max-width: 820px ){
+  .app-container-category-content-category > div > div > div {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    align-items: center; 
+  }
 }
 
 .app-container-edit-category {
