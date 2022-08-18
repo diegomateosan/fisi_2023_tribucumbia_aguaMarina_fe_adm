@@ -5,5 +5,40 @@
 }
 
 .app-container-category-content {
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+.app-container-user-edit-form {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.app-container-user-edit-form-input {
+  /* background-color: red; */
+  background-color: #fff;
+  border-radius: 2rem;
+  padding: 0 2rem 0 2rem;
+  box-shadow: 0 2rem 3rem rgb(132 139 200 / 18%);
+  height: 700px;
+  width: 70%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.user-top {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.user-bot {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

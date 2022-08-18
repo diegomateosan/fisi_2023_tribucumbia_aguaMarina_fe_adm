@@ -115,9 +115,11 @@ export const CreatePlatilloContent: React.FC<{
   const mostrarImagen = () => {
     if (urlState === true) {
       return (
-        <div className="app-container-platillo-image-uploaded">
-          <label>Previsualización de la Imagen </label>
-          <img src={imageUrl} alt="image just uploaded" />
+        <div className="container-create-image-uploaded">
+          <div className="txt1">
+            <h1>Previsualización de la Imagen</h1>{" "}
+          </div>
+          <img className="img-create" src={imageUrl} alt="image just uploaded"/>
         </div>
       );
     }
@@ -129,14 +131,13 @@ export const CreatePlatilloContent: React.FC<{
   };
 
   const categoriaID = async (name: string) => {
-    if(nombrecategory!==""){
+    if (nombrecategory !== "") {
       const result = await categoryService.showID(name);
-     console.log(result.data.id); 
-    setid_categoria(result.data.id);
-      setid_categoriaState(true)
- 
+      console.log(result.data.id);
+      setid_categoria(result.data.id);
+      setid_categoriaState(true);
     }
-     };
+  };
 
   const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setnombrecategory(event.target.value);
@@ -146,6 +147,7 @@ export const CreatePlatilloContent: React.FC<{
     if (categoryList !== null) {
       return (
         <select
+          className="categoria"
           name="Categoria "
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => evento(e)}
         >
@@ -160,7 +162,7 @@ export const CreatePlatilloContent: React.FC<{
       );
     } else {
       return (
-        <select name="Categoria ">
+        <select name="Categoria " className="categoria">
           <option>No hay categorias </option>
         </select>
       );
@@ -179,7 +181,7 @@ export const CreatePlatilloContent: React.FC<{
       setUrlState(false);
     }
     console.log(imageUpload);
-  }, [imageUpload,nombrecategory]);
+  }, [imageUpload, nombrecategory]);
 
   const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
@@ -211,89 +213,104 @@ export const CreatePlatilloContent: React.FC<{
   };
 
   const CreatePlatillo = async () => {
+    if (
+      nameState === true &&
+      descriptionState === true &&
+      urlState === true &&
+      precioState === true &&
+      id_categoriaState === true
+    ) {
+      // mandar los datos del platillo  ojo no olvides los tipos
 
-      if (
-        nameState === true &&
-        descriptionState === true &&
-        urlState === true &&
-        precioState === true &&
-        id_categoriaState === true 
-      ) {
-        // mandar los datos del platillo  ojo no olvides los tipos
-
-        const result = await dishesService.create(
-          name,
-          description,
-          imageUrl,
-          Number(precio),
-          Number(id_categoria)
-        );
-        console.log(result);
-        alert("Registro exitoso");
-        navigate("/platillo");
-      } else {
-        alert("campos vacios");
-      }
-    
+      const result = await dishesService.create(
+        name,
+        description,
+        imageUrl,
+        Number(precio),
+        Number(id_categoria)
+      );
+      console.log(result);
+      alert("Registro exitoso");
+      navigate("/platillo");
+    } else {
+      alert("campos vacios");
+    }
   };
 
   return (
-    <div className="app-container-platillo-create">
-      <div className="app-container-platillo-create-form">
-        <InputDefault
-          estado={nameState}
-          campo={name}
-          cambiarEstado={(txt: boolean) => setNameState(txt)}
-          cambiarCampo={(txt: string) => setName(txt)}
-          tipo="text"
-          label="Nombre"
-          placeholder="Ejemplo: Ceviche Mixto"
-          leyendaError="La categoría debe contener como mínimo 6 caracteres"
-          expresionRegular={/^.{6,25}$/}
-        />
-
-        <InputDefault
-          estado={descriptionState}
-          campo={description}
-          cambiarEstado={(txt: boolean) => setDescriptionState(txt)}
-          cambiarCampo={(txt: string) => setDescription(txt)}
-          tipo="text"
-          label="Descripción"
-          placeholder="Ejemplo: zzz"
-          leyendaError="La categoría debe contener como mínimo 6 caracteres"
-          expresionRegular={/^.{6,25}$/}
-        />
-
-        <InputDefault
-          estado={precioState}
-          campo={precio}
-          cambiarEstado={(txt: boolean) => setprecioState(txt)}
-          cambiarCampo={(txt: string) => setprecio(txt)}
-          tipo="text"
-          label="Precío"
-          placeholder="Ejemplo: 20.00 "
-          leyendaError="La categoría debe contener como mínimo 6 caracteres"
-          expresionRegular={/[0-9]+[.]([1-9][0-9]|[0][0])$/}
-        />
-
-        <div className="app-container-platillo-create-category">
-          <label>Categorias</label>
-          {mapearCategorias()}
-        </div>
-
-        <div className="app-container-platillo-create-file">
-          <label>Imagen</label>
-          <input type="file" onChange={(event) => handleOnChange(event)} />
-          <button onClick={uploadImage}>Upload Image</button>
-          {buttonState ? (
-            <Button placeholder="Registrar" handleClick={CreatePlatillo} />
-          ) : (
-            <div></div>
-          )}
-        </div>
+    <div className="create-container-platillo">
+      <div className="txt">
+        <h1>Registro de Platillos</h1>
       </div>
-      <div className="app-container-platillo-create-image">
-        {mostrarImagen()}
+      <div className="container-platillo-create-form">
+        <div className="create-top">
+          <div className="create-top-left">
+            <div className="create-inputs">
+              <InputDefault
+                estado={nameState}
+                campo={name}
+                cambiarEstado={(txt: boolean) => setNameState(txt)}
+                cambiarCampo={(txt: string) => setName(txt)}
+                tipo="text"
+                label="Nombre"
+                placeholder="Ejemplo: Ceviche Mixto"
+                leyendaError="La categoría debe contener como mínimo 6 caracteres"
+                expresionRegular={/^.{6,25}$/}
+              />
+
+              <InputDefault
+                estado={descriptionState}
+                campo={description}
+                cambiarEstado={(txt: boolean) => setDescriptionState(txt)}
+                cambiarCampo={(txt: string) => setDescription(txt)}
+                tipo="text"
+                label="Descripción"
+                placeholder="Ejemplo: zzz"
+                leyendaError="La categoría debe contener como mínimo 6 caracteres"
+                expresionRegular={/^.{6,25}$/}
+              />
+
+              <InputDefault
+                estado={precioState}
+                campo={precio}
+                cambiarEstado={(txt: boolean) => setprecioState(txt)}
+                cambiarCampo={(txt: string) => setprecio(txt)}
+                tipo="text"
+                label="Precío"
+                placeholder="Ejemplo: 20.00 "
+                leyendaError="La categoría debe contener como mínimo 6 caracteres"
+                expresionRegular={/[0-9]+[.]([1-9][0-9]|[0][0])$/}
+              />
+
+              <div className="app-container-platillo-create-category">
+              <h4>Categorias</h4>
+              {mapearCategorias()}
+              </div>
+            </div>
+          </div>
+          <div className="create-top-right">
+
+              {mostrarImagen()}
+
+          </div>
+        </div>
+        <div className="create-bot">
+          <div className="container-platillo-create-file">
+            <div className="edit-file">
+              <h4>Imagen</h4>
+              <input type="file" onChange={(event) => handleOnChange(event)} />
+              <button onClick={uploadImage}>Upload Image</button>
+            </div>
+
+            <div className="button-edit">
+              {buttonState ? (
+                <Button placeholder="Registrar" handleClick={CreatePlatillo} />
+              ) : (
+                <div></div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
