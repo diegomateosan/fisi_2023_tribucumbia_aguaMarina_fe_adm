@@ -29,6 +29,7 @@ export const LoginContainer: React.FC<{
         alert("Usuario inició sesión correctamente");
         console.log(result);
         handleauth();
+        window.location.reload();
       }
     }
   };

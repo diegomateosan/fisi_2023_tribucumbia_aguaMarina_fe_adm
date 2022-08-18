@@ -29,7 +29,7 @@ import { Button } from "../../components/button/button";
 import categoryService from "../../services/category";
 import { CategoryData } from "../../entities/category";
 import dishesService from "../../services/dishes";
-import "./platillo.css"
+import "./platillo.css";
 
 export const Platillo: React.FC<{
   handleauth: () => void;
@@ -233,7 +233,9 @@ export const EditPlatillo: React.FC<{
     if (urlState === true) {
       return (
         <div className="app-container-create-image-uploaded">
-          <label><h1>Previsualización de la Imagen</h1> </label>
+          <label>
+            <h1>Previsualización de la Imagen</h1>{" "}
+          </label>
           <img src={imageUrl} alt="image just uploaded" />
         </div>
       );
@@ -257,8 +259,8 @@ export const EditPlatillo: React.FC<{
         Number(id)
       );
       console.log(result);
-      navigate("/platillo");
       alert("Platillo editado");
+      navigate("/platillo");
     }
   };
 
@@ -339,7 +341,6 @@ export const EditPlatillo: React.FC<{
                         <div></div>
                       )}
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -354,7 +355,6 @@ export const EditPlatillo: React.FC<{
     </div>
   );
 };
-
 
 export const MostrarPlatillo: React.FC<{
   handleauth: () => void;
@@ -403,7 +403,7 @@ export const MostrarPlatillo: React.FC<{
     }
     categoriaID(categoria);
     console.log(imageUpload);
-  }, [imageUpload,categoria]);
+  }, [imageUpload, categoria]);
 
   useEffect(() => {
     llamarCategorias();
@@ -416,14 +416,13 @@ export const MostrarPlatillo: React.FC<{
   };
 
   const categoriaID = async (name: string) => {
-    if(categoria!==""){
+    if (categoria !== "") {
       const result = await categoryService.showID(name);
-     console.log(result.data.id); 
-    setid_categoria(result.data.id);
-      setid_categoriaState(true)
- 
+      console.log(result.data.id);
+      setid_categoria(result.data.id);
+      setid_categoriaState(true);
     }
-     };
+  };
 
   const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCategoria(event.target.value);
@@ -490,27 +489,25 @@ export const MostrarPlatillo: React.FC<{
   };
 
   const EditarPlatillo = async () => {
-
-      if (
-        nameState === true &&
-        descriptionState === true &&
-        urlState === true &&
-        precioState === true &&
-        id_categoriaState === true
-      ) {
-        const result = await dishesService.edit(
-          name,
-          description,
-          imageUrl,
-          Number(precio),
-          Number(id_categoria),
-          Number(id)
-        );
-        console.log(result);
-        navigate("/platillo")
-        alert("Platillo editado");
-      }
-
+    if (
+      nameState === true &&
+      descriptionState === true &&
+      urlState === true &&
+      precioState === true &&
+      id_categoriaState === true
+    ) {
+      const result = await dishesService.edit(
+        name,
+        description,
+        imageUrl,
+        Number(precio),
+        Number(id_categoria),
+        Number(id)
+      );
+      console.log(result);
+      navigate("/platillo");
+      alert("Platillo editado");
+    }
   };
 
   return (
@@ -526,38 +523,34 @@ export const MostrarPlatillo: React.FC<{
             handleClick={() => navigate("/platillo")}
           />
           <div className="app-container-category-edit-form">
-             <label>Id del platillo:</label>
-              <label> {id}</label>
-              <br></br>          
-              <label>Nombre:</label>
-              <label>{name}</label>
-              <br></br>
-              <label>Descripción:</label>
-              <label>{description}</label>
-              <br></br>
-              <label>Precio</label>
-              <label>{precio}</label>
-              <br></br>
-              <label>Id de categoria:</label>
-              <label>{id_categoria}</label>
-              <br></br>
-              <label>Nombre de categoria:</label>
-              <label>{categoria}</label>
-              <br></br>
-              
+            <label>Id del platillo:</label>
+            <label> {id}</label>
+            <br></br>
+            <label>Nombre:</label>
+            <label>{name}</label>
+            <br></br>
+            <label>Descripción:</label>
+            <label>{description}</label>
+            <br></br>
+            <label>Precio</label>
+            <label>{precio}</label>
+            <br></br>
+            <label>Id de categoria:</label>
+            <label>{id_categoria}</label>
+            <br></br>
+            <label>Nombre de categoria:</label>
+            <label>{categoria}</label>
+            <br></br>
 
             <div className="app-container-category-create-image">
               {mostrarImagen()}
             </div>
-
           </div>
         </div>
       </div>
     </div>
   );
 };
-
-
 
 export const BorrarPlatillo: React.FC<{
   handleauth: () => void;
@@ -588,6 +581,8 @@ export const BorrarPlatillo: React.FC<{
   const BorrarPlatillo = async () => {
     const result = await dishesService.delete(id);
     console.log(result);
+    alert("Platillo borrado con éxito");
+    navigate("/platillo");
   };
 
   return (
@@ -600,7 +595,7 @@ export const BorrarPlatillo: React.FC<{
         <div className="app-container-category-content-header">
           <HeaderBack
             placeholder="Eliminar categorías"
-            handleClick={() => navigate("/category")}
+            handleClick={() => navigate("/platillo")}
           />
           <div className="app-container-category-edit-form">
             <div className="app-container-category-edit-form-input">
@@ -632,10 +627,4 @@ export const BorrarPlatillo: React.FC<{
       </div>
     </div>
   );
-
-  
 };
-
-
-
-

@@ -170,6 +170,8 @@ export const EditCategory: React.FC<{
         id
       );
       console.log(result);
+      alert("Categoría editada con éxito");
+      navigate("/category");
     } else {
       alert("campos vacios");
     }
@@ -242,7 +244,6 @@ export const EditCategory: React.FC<{
                       <div></div>
                     )}
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -271,6 +272,8 @@ export const DeleteCategory: React.FC<{
   const BorrarCategoria = async () => {
     const result = await categoryService.delete(id);
     console.log(result);
+    alert("Categoría editada con éxito");
+    navigate("category");
   };
 
   const mostrarImagen = () => {
