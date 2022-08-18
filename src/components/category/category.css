@@ -26,9 +26,6 @@
   width: 33%;
 }
 
-
-
-
 .app-container-category-create-image {
   margin-top: 30px;
 }
@@ -59,3 +56,115 @@
   font-size: 18px;
   margin-bottom: 20px;
 }
+
+/*****************************************/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Sora&display=swap');
+.create-container-category {
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+}
+.txt {
+  width: 500px;
+  margin: auto;
+}
+.txt>h1 {
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+
+.container-category-create-form {
+  width: 60%;
+  margin: auto;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  background-color: #fff;
+  border-radius: 2rem;
+  padding: 0 2rem 0 2rem;
+  box-shadow: 0 2rem 3rem rgb(132 139 200 / 18%);
+  padding-top: 20px;
+  /* background-color: red; */
+}
+.create-top {
+  display: flex;
+  height: 400px;
+  gap: 10px;
+}
+.create-top-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid aquamarine;
+  border-radius: 15px;
+}
+.create-top-right {
+  width: 50%;
+  border: 1px solid aquamarine;
+  border-radius: 15px;
+}
+.container-create-image-uploaded {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.txt1 {
+
+  padding: 10px;
+  /* display: flex;*/
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+.txt1>h1 {
+  width: 100%;
+  margin: auto;
+
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-right: 10px;
+}
+.container-create-image-uploaded .img-create {
+  width: 300px;
+  height: 300px;
+}
+.create-inputs {
+  /* background-color: yellow; */
+}
+.container-category-create-file {
+  height: 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.edit-file {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.edit-file>button {
+  cursor: pointer;
+}
+
+
+
+
+

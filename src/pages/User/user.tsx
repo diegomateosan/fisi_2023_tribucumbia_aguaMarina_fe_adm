@@ -162,8 +162,12 @@ export const BorrarUser: React.FC<{
             placeholder="Eliminar Usuario"
             handleClick={() => navigate("/user")}
           />
-          <div className="app-container-category-edit-form">
-            <div className="app-container-category-edit-form-input">
+        </div>
+
+        <div className="app-container-user-edit-form">
+          <div className="app-container-user-edit-form-input">
+            
+            <div className="user-top">
               <StaticInput type="text" value={name} placeholder="Nombre" />
               <StaticInput
                 type="text"
@@ -181,7 +185,9 @@ export const BorrarUser: React.FC<{
               <StaticInput type="text" value={gender} placeholder="Género" />
 
               <StaticInput type="text" value={id_profile} placeholder="Rol" />
+            </div>
 
+            <div className="user-bot">
               <Button
                 placeholder="Borrar Usuario"
                 handleClick={BorrarUsuario}

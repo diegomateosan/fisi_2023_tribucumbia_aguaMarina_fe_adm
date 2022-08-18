@@ -29,7 +29,7 @@ import { Button } from "../../components/button/button";
 import categoryService from "../../services/category";
 import { CategoryData } from "../../entities/category";
 import dishesService from "../../services/dishes";
-import "./platillo.css"
+import "./platillo.css";
 
 export const Platillo: React.FC<{
   handleauth: () => void;
@@ -79,29 +79,28 @@ export const CreatePlatillo: React.FC<{
       <div className="app-container-category-content">
         <div className="app-container-category-content-header">
           <HeaderBack
-            placeholder="Crear Platillos"
+            placeholder="Platillos"
             handleClick={() => navigate("/platillo")}
           />
-
-          <CreatePlatilloContent
-            name={name}
-            setName={(txt: string) => setName(txt)}
-            nameState={nameState}
-            setNameState={(txt: boolean) => setNameState(txt)}
-            description={description}
-            setDescription={(txt: string) => setDescription(txt)}
-            descriptionState={descriptionState}
-            setDescriptionState={(txt: boolean) => setDescriptionState(txt)}
-            precio={precio}
-            setprecio={(txt: string) => setprecio(txt)}
-            precioState={precioState}
-            setprecioState={(txt: boolean) => setprecioState(txt)}
-            id_categoria={id_categoria}
-            setid_categoria={(txt: number) => setid_categoria(txt)}
-            id_categoriaState={id_categoriaState}
-            setid_categoriaState={(txt: boolean) => setid_categoriaState(txt)}
-          />
         </div>
+        <CreatePlatilloContent
+          name={name}
+          setName={(txt: string) => setName(txt)}
+          nameState={nameState}
+          setNameState={(txt: boolean) => setNameState(txt)}
+          description={description}
+          setDescription={(txt: string) => setDescription(txt)}
+          descriptionState={descriptionState}
+          setDescriptionState={(txt: boolean) => setDescriptionState(txt)}
+          precio={precio}
+          setprecio={(txt: string) => setprecio(txt)}
+          precioState={precioState}
+          setprecioState={(txt: boolean) => setprecioState(txt)}
+          id_categoria={id_categoria}
+          setid_categoria={(txt: number) => setid_categoria(txt)}
+          id_categoriaState={id_categoriaState}
+          setid_categoriaState={(txt: boolean) => setid_categoriaState(txt)}
+        />
       </div>
     </div>
   );
@@ -233,7 +232,9 @@ export const EditPlatillo: React.FC<{
     if (urlState === true) {
       return (
         <div className="app-container-create-image-uploaded">
-          <label><h1>Previsualización de la Imagen</h1> </label>
+          <label>
+            <h1>Previsualización de la Imagen</h1>{" "}
+          </label>
           <img src={imageUrl} alt="image just uploaded" />
         </div>
       );
@@ -339,7 +340,6 @@ export const EditPlatillo: React.FC<{
                         <div></div>
                       )}
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -354,7 +354,6 @@ export const EditPlatillo: React.FC<{
     </div>
   );
 };
-
 
 export const MostrarPlatillo: React.FC<{
   handleauth: () => void;
@@ -403,7 +402,7 @@ export const MostrarPlatillo: React.FC<{
     }
     categoriaID(categoria);
     console.log(imageUpload);
-  }, [imageUpload,categoria]);
+  }, [imageUpload, categoria]);
 
   useEffect(() => {
     llamarCategorias();
@@ -416,14 +415,13 @@ export const MostrarPlatillo: React.FC<{
   };
 
   const categoriaID = async (name: string) => {
-    if(categoria!==""){
+    if (categoria !== "") {
       const result = await categoryService.showID(name);
-     console.log(result.data.id); 
-    setid_categoria(result.data.id);
-      setid_categoriaState(true)
- 
+      console.log(result.data.id);
+      setid_categoria(result.data.id);
+      setid_categoriaState(true);
     }
-     };
+  };
 
   const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCategoria(event.target.value);
@@ -482,7 +480,9 @@ export const MostrarPlatillo: React.FC<{
     if (urlState === true) {
       return (
         <div className="app-container-create-image-uploaded">
-          <label>Previsualización de la Imagen </label>
+          <label>
+            <h1>Previsualización de la Imagen </h1>
+          </label>
           <img src={imageUrl} alt="image just uploaded" />
         </div>
       );
@@ -490,27 +490,25 @@ export const MostrarPlatillo: React.FC<{
   };
 
   const EditarPlatillo = async () => {
-
-      if (
-        nameState === true &&
-        descriptionState === true &&
-        urlState === true &&
-        precioState === true &&
-        id_categoriaState === true
-      ) {
-        const result = await dishesService.edit(
-          name,
-          description,
-          imageUrl,
-          Number(precio),
-          Number(id_categoria),
-          Number(id)
-        );
-        console.log(result);
-        navigate("/platillo")
-        alert("Platillo editado");
-      }
-
+    if (
+      nameState === true &&
+      descriptionState === true &&
+      urlState === true &&
+      precioState === true &&
+      id_categoriaState === true
+    ) {
+      const result = await dishesService.edit(
+        name,
+        description,
+        imageUrl,
+        Number(precio),
+        Number(id_categoria),
+        Number(id)
+      );
+      console.log(result);
+      navigate("/platillo");
+      alert("Platillo editado");
+    }
   };
 
   return (
@@ -525,39 +523,59 @@ export const MostrarPlatillo: React.FC<{
             placeholder="Detalle platillo"
             handleClick={() => navigate("/platillo")}
           />
+
           <div className="app-container-category-edit-form">
-             <label>Id del platillo:</label>
-              <label> {id}</label>
-              <br></br>          
-              <label>Nombre:</label>
-              <label>{name}</label>
-              <br></br>
-              <label>Descripción:</label>
-              <label>{description}</label>
-              <br></br>
-              <label>Precio</label>
-              <label>{precio}</label>
-              <br></br>
-              <label>Id de categoria:</label>
-              <label>{id_categoria}</label>
-              <br></br>
-              <label>Nombre de categoria:</label>
-              <label>{categoria}</label>
-              <br></br>
-              
+            <div className="app-container-category-todo">
+              <div className="app-container-category-edit-form-input">
+                <div className="form-input-container">
+                  <div className="label">
+                    <h1>Detalles del platillo</h1>
+                  </div>
+                  <div className="inputs">
+                    <StaticInput
+                      type="text"
+                      value={id}
+                      placeholder="id del Platillo"
+                    />
+                    <StaticInput
+                      type="text"
+                      value={name}
+                      placeholder="Nombre"
+                    />
+                    <StaticInput
+                      type="text"
+                      value={description}
+                      placeholder="Descripción"
+                    />
+                    <StaticInput
+                      type="number"
+                      value={precio}
+                      placeholder="Precio"
+                    />
+                    <StaticInput
+                      type="text"
+                      value={id_categoria}
+                      placeholder="Id de categoria"
+                    />
+                    <StaticInput
+                      type="text"
+                      value={categoria}
+                      placeholder="Nombre de la categoria"
+                    />
+                  </div>
+                </div>
+              </div>
 
-            <div className="app-container-category-create-image">
-              {mostrarImagen()}
+              <div className="app-container-category-create-image">
+                {mostrarImagen()}
+              </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   );
 };
-
-
 
 export const BorrarPlatillo: React.FC<{
   handleauth: () => void;
@@ -602,40 +620,54 @@ export const BorrarPlatillo: React.FC<{
             placeholder="Eliminar categorías"
             handleClick={() => navigate("/category")}
           />
-          <div className="app-container-category-edit-form">
+        </div>
+
+        <div className="app-container-category-edit-form">
+          <div className="app-container-category-todo">
             <div className="app-container-category-edit-form-input">
-              <StaticInput type="text" value={id} placeholder="id" />
-              <StaticInput type="text" value={name} placeholder="Nombre" />
-              <StaticInput
-                type="text"
-                value={description}
-                placeholder="Descripción"
-              />
-              <StaticInput type="number" value={precio} placeholder="Precio" />
+              <div className="form-input-container">
+                <div className="label">
+                  <h1>Detalles del patillo</h1>
+                </div>
+                <div className="inputs">
+                  <StaticInput type="text" value={id} placeholder="id" />
+                  <StaticInput type="text" value={name} placeholder="Nombre" />
+                  <StaticInput
+                    type="text"
+                    value={description}
+                    placeholder="Descripción"
+                  />
+                  <StaticInput
+                    type="number"
+                    value={precio}
+                    placeholder="Precio"
+                  />
 
-              <StaticInput
-                type="number"
-                value={id_categoria}
-                placeholder="Categoria"
-              />
+                  <StaticInput
+                    type="number"
+                    value={id_categoria}
+                    placeholder="Categoria"
+                  />
+                </div>
 
-              <Button
-                placeholder="Borrar categoría"
-                handleClick={BorrarPlatillo}
-              />
+                <div className="app-container-category-edit-file">
+                  <div className="button-edit">
+                    <Button
+                      placeholder="Borrar platillo"
+                      handleClick={BorrarPlatillo}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="app-container-category-create-image">
+              {mostrarImagen()}
             </div>
           </div>
-          <div className="app-container-category-create-image">
-            {mostrarImagen()}
-          </div>
         </div>
+
       </div>
     </div>
   );
-
-  
 };
-
-
-
-

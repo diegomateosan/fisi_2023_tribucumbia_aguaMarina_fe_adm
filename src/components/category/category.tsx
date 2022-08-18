@@ -93,9 +93,11 @@ export const CreateContent: React.FC<{
   const mostrarImagen = () => {
     if (urlState === true) {
       return (
-        <div className="app-container-create-image-uploaded">
-          <label>Previsualización de la Imagen </label>
-          <img src={imageUrl} alt="image just uploaded" />
+        <div className="container-create-image-uploaded">
+          <div className="txt1">
+            <h1>Previsualización de la Imagen</h1>{" "}
+          </div>
+          <img className="img-create"  src={imageUrl} alt="image just uploaded" />
         </div>
       );
     }
@@ -154,35 +156,52 @@ export const CreateContent: React.FC<{
   };
 
   return (
-    <div className="app-container-category-create">
-      <div className="app-container-category-create-form">
-        <InputDefault
-          estado={nameState}
-          campo={name}
-          cambiarEstado={(txt: boolean) => setNameState(txt)}
-          cambiarCampo={(txt: string) => setName(txt)}
-          tipo="text"
-          label="Nombre"
-          placeholder="Ejemplo: Entradas"
-          leyendaError="La categoría debe contener como mínimo 6 caracteres"
-          expresionRegular={/^.{6,25}$/}
-        />
+    <div className="create-container-category">
+  <div className="txt">
+    <h1>Registro de Categorias</h1>
+  </div>
 
-        <InputDefault
-          estado={descriptionState}
-          campo={description}
-          cambiarEstado={(txt: boolean) => setDescriptionState(txt)}
-          cambiarCampo={(txt: string) => setDescription(txt)}
-          tipo="text"
-          label="Descripción"
-          placeholder="Ejemplo: zzz"
-          leyendaError="La categoría debe contener como mínimo 6 caracteres"
-          expresionRegular={/^.{6,25}$/}
-        />
-        <div className="app-container-category-create-file">
-          <label>Imagen</label>
+  <div className="container-category-create-form">
+    <div className="create-top">
+      <div className="create-top-left">
+        <div className="create-inputs">
+          <InputDefault
+            estado={nameState}
+            campo={name}
+            cambiarEstado={(txt: boolean) => setNameState(txt)}
+            cambiarCampo={(txt: string) => setName(txt)}
+            tipo="text"
+            label="Nombre"
+            placeholder="Ejemplo: Entradas"
+            leyendaError="La categoría debe contener como mínimo 6 caracteres"
+            expresionRegular={/^.{6,25}$/}
+          />
+
+          <InputDefault
+            estado={descriptionState}
+            campo={description}
+            cambiarEstado={(txt: boolean) => setDescriptionState(txt)}
+            cambiarCampo={(txt: string) => setDescription(txt)}
+            tipo="text"
+            label="Descripción"
+            placeholder="Ejemplo: zzz"
+            leyendaError="La categoría debe contener como mínimo 6 caracteres"
+            expresionRegular={/^.{6,25}$/}
+          />
+        </div>
+      </div>
+      <div className="create-top-right">{mostrarImagen()}</div>
+    </div>
+
+    <div className="create-bot">
+      <div className="container-category-create-file">
+        <div className="edit-file">
+          <h4>Imagen</h4>
           <input type="file" onChange={(event) => handleOnChange(event)} />
           <button onClick={uploadImage}>Upload Image</button>
+        </div>
+
+        <div className="button-edit">
           {buttonState ? (
             <Button placeholder="Registrar" handleClick={createCategory} />
           ) : (
@@ -190,9 +209,8 @@ export const CreateContent: React.FC<{
           )}
         </div>
       </div>
-      <div className="app-container-category-create-image">
-        {mostrarImagen()}
-      </div>
     </div>
+  </div>
+</div>
   );
 };

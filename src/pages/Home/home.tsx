@@ -242,7 +242,6 @@ export const EditCategory: React.FC<{
                       <div></div>
                     )}
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -276,7 +275,9 @@ export const DeleteCategory: React.FC<{
   const mostrarImagen = () => {
     return (
       <div className="app-container-create-image-uploaded">
-        <label>Previsualización de la Imagen </label>
+        <label>
+          <h1>Previsualización de la Imagen</h1>{" "}
+        </label>
         <img src={imageUrl} alt="image just uploaded" />
       </div>
     );
@@ -294,27 +295,43 @@ export const DeleteCategory: React.FC<{
             placeholder="Eliminar categorías"
             handleClick={() => navigate("/category")}
           />
-          <div className="app-container-category-edit-form">
-            <div className="app-container-category-todo">
-              <div className="app-container-category-edit-form-input">
-                <StaticInput type="text" value={id} placeholder="id" />
-                <StaticInput type="text" value={name} placeholder="Nombre" />
-                <StaticInput
-                  type="text"
-                  value={description}
-                  placeholder="Descripción"
-                />
-                <Button
-                  placeholder="Borrar categoría"
-                  handleClick={BorrarCategoria}
-                />
+        </div>
+
+        <div className="app-container-category-edit-form">
+          <div className="app-container-category-todo">
+            <div className="app-container-category-edit-form-input">
+              <div className="form-input-container">
+                <div className="label">
+                  <h1>Detalles del la categoria</h1>
+                </div>
+                <div className="inputs">
+                  <StaticInput type="text" value={id} placeholder="id" />
+                  <StaticInput type="text" value={name} placeholder="Nombre" />
+                  <StaticInput
+                    type="text"
+                    value={description}
+                    placeholder="Descripción"
+                  />
+                </div>
+
+                <div className="app-container-category-edit-file">
+                  <div className="button-edit">
+                    <Button
+                      placeholder="Borrar categoría"
+                      handleClick={BorrarCategoria}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="app-container-category-create-image">
-            {mostrarImagen()}
+
+            <div className="app-container-category-create-image">
+              {mostrarImagen()}
+            </div>
           </div>
         </div>
+
+        
       </div>
     </div>
   );
