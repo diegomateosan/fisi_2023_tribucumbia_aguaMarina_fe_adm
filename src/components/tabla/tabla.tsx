@@ -74,7 +74,7 @@ export const TablaUser: React.FC<{}> = () => {
                             className="btns-manage-edit"
                             onClick={() => DeleteUsuario(data)}
                           >
-                            Editar
+                            Eliminar
                           </li>
                         </ul>
                       </td>
