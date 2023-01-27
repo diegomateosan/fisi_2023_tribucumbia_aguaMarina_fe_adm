@@ -1,10 +1,9 @@
 import axios from "axios";
 import { UserDefault } from "../entities/User";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://kpl1jddpz7.execute-api.us-east-1.amazonaws.com";
 
 const userService = {
-
   list: async (): Promise<UserDefault[] | null> => {
     try {
       const { data } = await axios.get(`${BASE_URL}/auth/all`);
@@ -23,17 +22,14 @@ const userService = {
     }
   },
 
-
-
-
   register: async (
     nameValue: string,
     emailValue: string,
     passwordvalue: string,
     roleValue: string,
-    phone : string,
+    phone: string,
     gender: string,
-    dni : string,
+    dni: string,
     lastname: string
   ): Promise<UserDefault[] | null> => {
     try {
@@ -43,12 +39,12 @@ const userService = {
         data: {
           name: nameValue,
           lastname: lastname,
-          gender : gender,
+          gender: gender,
           email: emailValue,
           dni: dni,
           phone: phone,
           password: passwordvalue,
-          role: roleValue
+          role: roleValue,
         },
       });
       return data;
@@ -118,9 +114,6 @@ const userService = {
       return null;
     }
   },
-
-
-
 };
 
 export default userService;
