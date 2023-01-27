@@ -48,11 +48,15 @@ function App() {
     <BrowserRouter>
       <Routes>
         {!adminLoggedIn && (
-          <Route
-            path="/"
-            element={<Login handleauth={() => setadminLoggedIn(true)} />}
-          />
+          <>
+            <Route
+              path="/"
+              element={<Login handleauth={() => setadminLoggedIn(true)} />}
+            />
+          </>
         )}
+
+        <Route path="/x" element={<div>hola</div>} />
 
         {adminLoggedIn && (
           <>
@@ -114,7 +118,6 @@ function App() {
                 <MostrarPlatillo handleauth={() => setadminLoggedIn(false)} />
               }
             />
-
 
             <Route
               path="/user"

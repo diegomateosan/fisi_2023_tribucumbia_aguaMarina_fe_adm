@@ -334,8 +334,6 @@ export const DeleteCategory: React.FC<{
             </div>
           </div>
         </div>
-
-        
       </div>
     </div>
   );
