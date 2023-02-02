@@ -11,9 +11,9 @@ import "./login.css";
 export const LoginContainer: React.FC<{
   handleauth: () => void;
 }> = ({ handleauth }) => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("jordy.mayhuay@gmail.com");
   const [emailState, setEmailState] = useState(false);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("jordy1234");
   const [passwordState, setPasswordState] = useState(false);
 
   const submitClick = async (emailValue: string, passwordValue: string) => {
