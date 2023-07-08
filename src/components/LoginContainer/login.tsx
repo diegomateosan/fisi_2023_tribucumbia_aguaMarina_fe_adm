@@ -39,10 +39,11 @@ export const LoginContainer: React.FC<{
       <div className="app-container-linput">
         <div className="app-container-header">
           <img
-            src={require("../../assets/Images/logo Brisas marinas.png")}
+            style={{ width: "200px" }}
+            src='https://dondealfredo.com/wp-content/uploads/2022/11/LOGO_-e1667286697526.jpg'
             alt="Brisas Marinas Logo"
           />
-          <h1>Brisas Marinas</h1>
+          <h1>Donde Alfredo</h1>
         </div>
       </div>
 
