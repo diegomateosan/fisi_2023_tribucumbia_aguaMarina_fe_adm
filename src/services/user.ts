@@ -1,7 +1,7 @@
 import axios from "axios";
 import { UserDefault } from "../entities/User";
 
-const BASE_URL = "https://kpl1jddpz7.execute-api.us-east-1.amazonaws.com";
+const BASE_URL = "https://mu44lco4c2.execute-api.us-east-1.amazonaws.com";
 
 const userService = {
   list: async (): Promise<UserDefault[] | null> => {
